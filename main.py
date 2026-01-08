@@ -1,15 +1,16 @@
 import tkinter as tk
-from tkinter import ttk, Canvas
+from tkinter import Canvas
 
 def main():
     root = tk.Tk()
     root.title("ArelGuard Cybersecurity Tool")
 
-    label = ttk.Label(root, text="Welcome to ArelGuard!")
-    label = Canvas(root, width=300, height=100)
-    label.pack(pady=20)
+    canvas = Canvas(root, width=300, height=300)
+    canvas.pack(pady=20)
+    canvas.create_text(150, 50, text="Welcome to ArelGuard !", font=("Helvetica", 16))
 
     root.mainloop()
 
 if __name__ == "__main__":
     main()
+    # test - AI helped
