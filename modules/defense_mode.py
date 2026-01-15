@@ -2,7 +2,7 @@ import time
 import random
 import threading
 
-class DefenseMode:
+class DosMode:
     def __init__(self):
         self.request_count = 0
         self.lock = threading.Lock()
@@ -44,5 +44,5 @@ class DefenseMode:
         display_thread.join()
 
 if __name__ == "__main__":
-    defense_mode = DefenseMode()
-    defense_mode.start(num_threads=10, duration=8)
+    dos_mode = DosMode()
+    dos_mode.start(num_threads=10, duration=8)
