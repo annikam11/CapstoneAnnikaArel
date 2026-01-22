@@ -1,6 +1,7 @@
 import time
 import random
 import threading
+import json
 
 class DefenseDosMode:
     def __init__(self):
@@ -11,6 +12,7 @@ class DefenseDosMode:
         self.overload_limit = 0
         self.confirm_threshold = 3
         self.last_state = {}
+        self.log_file = "dos_mode_log.json"
 
     # Simulate incoming requests with random intervals:
     def simulate_incoming_requests(self):
@@ -50,6 +52,9 @@ class DefenseDosMode:
                 "unique_ips": 1,
                 "top_ip": rps
             }
+            with open(self.log_file, "a") as f:
+                json.dump(self.last_state, f)
+                f.write("\n")
 
     def start(self, num_threads=5, duration=10):
         threads = []
@@ -70,9 +75,9 @@ class DefenseDosMode:
             t.join()
         display_thread.join()
 
-if __name__ == "__main__":
-    dos_mode = DefenseDosMode()
-    dos_mode.start(num_threads=10, duration=8)
+# if __name__ == "__main__":
+#     dos_mode = DefenseDosMode()
+#     dos_mode.start(num_threads=10, duration=8)
 
 class DefenseDDoS_Mode:
     def __init__(self):
@@ -80,11 +85,31 @@ class DefenseDDoS_Mode:
         self.lock = threading.Lock()
         self.running = True
 
-        self.ddos_limit = 2200
+        self.ddos_limit = 3000
         self.overload_limit = 0
         self.confirm_threshold = 3
         self.ip_request_counts = {}
         self.last_state = {}
+        self.log_file= "ddos_log.jsonl"
+        self.attacker_pool = [f"Attacker {i}" for i in range(1, 101)]
+        self.heavy_ratio = 0.10
+        self.medium_ratio = 0.20
+        self.behavior = {}
+        for a in self.attacker_pool:
+            roll = random.random()
+            if roll < self.heavy_ratio:
+                self.behavior[a] = "heavy"
+            elif roll < self.heavy_ratio + self.medium_ratio:
+                self.behavior[a] = "medium"
+            else:
+                self.behavior[a] = "light"
+        self.active_attackers = []
+        k0 = random.randint(5, 20)
+        self.active_attackers = random.sample(self.attacker_pool, k0)
+        self.max_dominance_ddos = 0.35
+        self.min_dominance_dos = 0.70
+        self.ddos_streak = 0
+        self.dos_streak = 0
     
     def simulate_incoming_requests(self):
         in_burst = False
@@ -97,10 +122,26 @@ class DefenseDDoS_Mode:
                 time.sleep(random.uniform(0.003, 0.01))
                 if random.random() < 0.05:
                     in_burst = True
-            ip = f"192.168.1.{random.randint(1, 255)}"
             with self.lock:
-                self.request_count += 1
-                self.ip_request_counts[ip] = self.ip_request_counts.get(ip, 0) + 1
+                attackers = list(self.active_attackers)
+            if not attackers:
+                time.sleep(0.01)
+                continue
+            attacker = random.choice(attackers)
+            ip = attacker
+            behavior = self.behavior[attacker]
+            if behavior == "heavy":
+                with self.lock:
+                    self.request_count += 3
+                    self.ip_request_counts[ip] = self.ip_request_counts.get(ip, 0) + 3
+            elif behavior == "medium":
+                with self.lock:
+                    self.request_count += 2
+                    self.ip_request_counts[ip] = self.ip_request_counts.get(ip, 0) + 2
+            else:
+                with self.lock:
+                    self.request_count += 1
+                    self.ip_request_counts[ip] = self.ip_request_counts.get(ip, 0) + 1
     
     def display_request_count(self):
         while self.running:
@@ -108,28 +149,43 @@ class DefenseDDoS_Mode:
             with self.lock:
                 rps = self.request_count
                 ip_snapshot = dict(self.ip_request_counts)
+                k = random.randint(5, 20)
+                self.active_attackers = random.sample(self.attacker_pool, k)
                 self.request_count = 0
                 self.ip_request_counts.clear()
             unique_ips = len(ip_snapshot)
             top_ips = max(ip_snapshot.values()) if ip_snapshot else 0
-            if rps > self.ddos_limit:
-                self.overload_limit += 1
-                if self.overload_limit >= self.confirm_threshold:
-                    if top_ips > rps * 0.7:
-                        print(f" Confirmed DoS attack detected! Requests per second: {rps}")
-                    else:
-                        print(f" Confirmed DDoS attack detected! Requests per second: {rps}, Unique IPs: {unique_ips}, Top IP requests: {top_ips}")
-                else:
-                    print(f" Spike was detected but not confirmed. Current requests: {rps}, Unique IPs: {unique_ips}")
+            dominance = (top_ips / rps) if rps > 0 else 0.0
+            dos_like = dominance >= self.min_dominance_dos
+            ddos_like = dominance <= self.max_dominance_ddos
+            over_limit = rps > self.ddos_limit
+            if over_limit and ddos_like:
+                self.ddos_streak +=1
             else:
-                self.overload_limit = 0
-                print(f" Normal traffic has occurred. Requests per second: {rps}, Unique IPs: {unique_ips}")
+                self.ddos_streak = 0
+            if over_limit and dos_like:
+                self.dos_streak +=1
+            else:
+                self.dos_streak = 0
+            if over_limit and (self.dos_streak >= self.confirm_threshold or unique_ips < 3):
+                print(f"Confirmed DoS attack detected! Requests per second: {rps}, Unique IPs: {unique_ips}, Top IP requests: {top_ips}, Dominance: {dominance:.2f}")
+            elif over_limit and self.ddos_streak >= self.confirm_threshold:
+                print(f"Confirmed DDoS attack detected! Requests per second: {rps}, Unique IPs: {unique_ips}, Top IP requests: {top_ips}, Dominance: {dominance:.2f}")
+            elif over_limit:
+                print(f"Spike was detected but not confirmed. Current requests: {rps}, Unique IPs: {unique_ips}, Top IP requests: {top_ips}, Dominance: {dominance:.2f}")
+            else:
+                print(f" Normal traffic has occurred. Requests per second: {rps}, Unique IPs: {unique_ips}, Top IP requests: {top_ips}, Dominance: {dominance:.2f}")
             self.last_state = {
                 "rps": rps,
-                "confirmed": self.overload_limit >= self.confirm_threshold,
+                "confirmed DoS": over_limit and (self.dos_streak >= self.confirm_threshold or unique_ips < 3),
+                "confirmed DDoS": over_limit and self.ddos_streak >= self.confirm_threshold,
                 "unique_ips": unique_ips,
-                "top_ip": top_ips
+                "top_ip": top_ips,
+                "dominance": dominance
             }
+            with open(self.log_file, "a") as f:
+                json.dump(self.last_state, f)
+                f.write("\n")
 
     def start(self, num_threads=10, duration=8):
         threads = []
