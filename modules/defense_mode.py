@@ -13,6 +13,13 @@ class DefenseDosMode:
         self.confirm_threshold = 3
         self.last_state = {}
         self.log_file = "dos_mode_log.json"
+        self.attacker_id = "Attacker_DoS"
+        self.ip_request_counts = {}
+        self.max_dominance_ddos = 0.35
+        self.min_dominance_dos = 0.70
+        self.ddos_streak = 0
+        self.dos_streak = 0
+        
 
     # Simulate incoming requests with random intervals:
     def simulate_incoming_requests(self):
@@ -28,14 +35,31 @@ class DefenseDosMode:
                     in_burst = True
             with self.lock:
                 self.request_count += 1
+                self.ip_request_counts[self.attacker_id] = self.ip_request_counts.get(self.attacker_id, 0) + 1
 
     # Every second, it will display how many requests occured in that second
     def display_request_count(self):
         while self.running:
             time.sleep(1)
             with self.lock:
-                rps = self.request_count
+                rps = self.request_count 
+                ip_snapshot = dict(self.ip_request_counts)
                 self.request_count = 0
+                self.ip_request_counts.clear()
+                unique_ips = len(ip_snapshot)
+                top_ips = max(ip_snapshot.values()) if ip_snapshot else 0
+                dominance = (top_ips / rps) if rps > 0 else 0.0
+                dos_like = dominance >= self.min_dominance_dos
+                ddos_like = dominance <= self.max_dominance_ddos
+                over_limit = rps > self.dos_limit
+            if over_limit and ddos_like:
+                self.ddos_streak +=1
+            else:
+                self.ddos_streak = 0
+            if over_limit and dos_like:
+                self.dos_streak +=1
+            else:
+                self.dos_streak = 0
             if rps > self.dos_limit:
                 self.overload_limit += 1
                 if self.overload_limit >= self.confirm_threshold:
@@ -49,8 +73,9 @@ class DefenseDosMode:
             self.last_state = {
                 "rps": rps,
                 "confirmed": self.overload_limit >= self.confirm_threshold,
-                "unique_ips": 1,
-                "top_ip": rps
+                "unique_ips": unique_ips,
+                "top_ip": top_ips,
+                "dominance": dominance
             }
             with open(self.log_file, "a") as f:
                 json.dump(self.last_state, f)
@@ -75,9 +100,9 @@ class DefenseDosMode:
             t.join()
         display_thread.join()
 
-# if __name__ == "__main__":
-#     dos_mode = DefenseDosMode()
-#     dos_mode.start(num_threads=10, duration=8)
+if __name__ == "__main__":
+    dos_mode = DefenseDosMode()
+    dos_mode.start(num_threads=10, duration=8)
 
 class DefenseDDoS_Mode:
     def __init__(self):
@@ -85,7 +110,7 @@ class DefenseDDoS_Mode:
         self.lock = threading.Lock()
         self.running = True
 
-        self.ddos_limit = 3000
+        self.ddos_limit = 3100
         self.overload_limit = 0
         self.confirm_threshold = 3
         self.ip_request_counts = {}
@@ -149,7 +174,7 @@ class DefenseDDoS_Mode:
             with self.lock:
                 rps = self.request_count
                 ip_snapshot = dict(self.ip_request_counts)
-                k = random.randint(5, 20)
+                k = random.randint(5, 45)
                 self.active_attackers = random.sample(self.attacker_pool, k)
                 self.request_count = 0
                 self.ip_request_counts.clear()
@@ -204,9 +229,9 @@ class DefenseDDoS_Mode:
             t.join()
         display_thread.join()
 
-if __name__ == "__main__":
-    ddos_mode = DefenseDDoS_Mode()
-    ddos_mode.start(num_threads=10, duration=8)
+# if __name__ == "__main__":
+#     ddos_mode = DefenseDDoS_Mode()
+#     ddos_mode.start(num_threads=10, duration=8)
 
 # class DefenseAdaptive_Mode:
 #     def __init__(self):
