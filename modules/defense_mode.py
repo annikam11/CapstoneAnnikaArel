@@ -9,15 +9,12 @@ class DefenseDosMode:
         self.lock = threading.Lock()
         self.running = True
         self.dos_limit = 2200
-        self.overload_limit = 0
         self.confirm_threshold = 3
         self.last_state = {}
         self.log_file = "dos_mode_log.json"
         self.attacker_id = "Attacker_DoS"
         self.ip_request_counts = {}
-        self.max_dominance_ddos = 0.35
         self.min_dominance_dos = 0.70
-        self.ddos_streak = 0
         self.dos_streak = 0
         
 
@@ -50,29 +47,22 @@ class DefenseDosMode:
                 top_ips = max(ip_snapshot.values()) if ip_snapshot else 0
                 dominance = (top_ips / rps) if rps > 0 else 0.0
                 dos_like = dominance >= self.min_dominance_dos
-                ddos_like = dominance <= self.max_dominance_ddos
                 over_limit = rps > self.dos_limit
-            if over_limit and ddos_like:
-                self.ddos_streak +=1
-            else:
-                self.ddos_streak = 0
             if over_limit and dos_like:
                 self.dos_streak +=1
             else:
                 self.dos_streak = 0
-            if rps > self.dos_limit:
-                self.overload_limit += 1
-                if self.overload_limit >= self.confirm_threshold:
-                    print(f"Confirmed DoS attack detected! Requests per second: {rps}")
-                else:
-                    print(f"Spike was detected but not confirmed. Current requests: {rps}")
+            confirmed_dos = self.dos_streak >= self.confirm_threshold and over_limit
+            if confirmed_dos:
+                print(f"Confirmed DoS attack detected! Requests per second: {rps}, Dominance: {dominance}")
+            elif over_limit:
+                    print(f"Spike was detected but not confirmed. Current requests: {rps}, Dominance: {dominance}")
             else:
-                self.overload_limit = 0
-                print(f" Normal traffic has occurred. Requests per second: {rps}")
+                print(f" Normal traffic has occurred. Requests per second: {rps}, Dominance: {dominance}")
 
             self.last_state = {
                 "rps": rps,
-                "confirmed": self.overload_limit >= self.confirm_threshold,
+                "confirmed": confirmed_dos,
                 "unique_ips": unique_ips,
                 "top_ip": top_ips,
                 "dominance": dominance
@@ -111,7 +101,6 @@ class DefenseDDoS_Mode:
         self.running = True
 
         self.ddos_limit = 3100
-        self.overload_limit = 0
         self.confirm_threshold = 3
         self.ip_request_counts = {}
         self.last_state = {}
@@ -181,20 +170,22 @@ class DefenseDDoS_Mode:
             unique_ips = len(ip_snapshot)
             top_ips = max(ip_snapshot.values()) if ip_snapshot else 0
             dominance = (top_ips / rps) if rps > 0 else 0.0
-            dos_like = dominance >= self.min_dominance_dos
-            ddos_like = dominance <= self.max_dominance_ddos
             over_limit = rps > self.ddos_limit
-            if over_limit and ddos_like:
-                self.ddos_streak +=1
-            else:
-                self.ddos_streak = 0
-            if over_limit and dos_like:
+            dos_evidence = over_limit and ( dominance >= self.min_dominance_dos or unique_ips <=3)
+            ddos_evidence = over_limit and ( dominance <= self.max_dominance_ddos and unique_ips >=4)
+            if dos_evidence:
                 self.dos_streak +=1
             else:
                 self.dos_streak = 0
-            if over_limit and (self.dos_streak >= self.confirm_threshold or unique_ips < 3):
+            if ddos_evidence:
+                self.ddos_streak +=1
+            else:
+                self.ddos_streak = 0
+            confirmed_dos= self.dos_streak >= self.confirm_threshold
+            confirmed_ddos= self.ddos_streak >= self.confirm_threshold
+            if confirmed_dos:
                 print(f"Confirmed DoS attack detected! Requests per second: {rps}, Unique IPs: {unique_ips}, Top IP requests: {top_ips}, Dominance: {dominance:.2f}")
-            elif over_limit and self.ddos_streak >= self.confirm_threshold:
+            elif confirmed_ddos:
                 print(f"Confirmed DDoS attack detected! Requests per second: {rps}, Unique IPs: {unique_ips}, Top IP requests: {top_ips}, Dominance: {dominance:.2f}")
             elif over_limit:
                 print(f"Spike was detected but not confirmed. Current requests: {rps}, Unique IPs: {unique_ips}, Top IP requests: {top_ips}, Dominance: {dominance:.2f}")
@@ -202,8 +193,8 @@ class DefenseDDoS_Mode:
                 print(f" Normal traffic has occurred. Requests per second: {rps}, Unique IPs: {unique_ips}, Top IP requests: {top_ips}, Dominance: {dominance:.2f}")
             self.last_state = {
                 "rps": rps,
-                "confirmed DoS": over_limit and (self.dos_streak >= self.confirm_threshold or unique_ips < 3),
-                "confirmed DDoS": over_limit and self.ddos_streak >= self.confirm_threshold,
+                "confirmed DoS": confirmed_dos,
+                "confirmed DDoS": confirmed_ddos,
                 "unique_ips": unique_ips,
                 "top_ip": top_ips,
                 "dominance": dominance
@@ -229,9 +220,9 @@ class DefenseDDoS_Mode:
             t.join()
         display_thread.join()
 
-# if __name__ == "__main__":
-#     ddos_mode = DefenseDDoS_Mode()
-#     ddos_mode.start(num_threads=10, duration=8)
+if __name__ == "__main__":
+    ddos_mode = DefenseDDoS_Mode()
+    ddos_mode.start(num_threads=10, duration=8)
 
 # class DefenseAdaptive_Mode:
 #     def __init__(self):
