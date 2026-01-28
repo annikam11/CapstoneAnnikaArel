@@ -16,23 +16,27 @@ class DefenseDosMode:
         self.ip_request_counts = {}
         self.min_dominance_dos = 0.70
         self.dos_streak = 0
+        self.blocked = False
         
 
     # Simulate incoming requests with random intervals:
     def simulate_incoming_requests(self):
         in_burst = False
         while self.running:
-            if in_burst:
-                time.sleep(random.uniform(0.001, 0.004))
-                if random.random() < 0.03:
-                    in_burst = False
+            if self.blocked == False:
+                if in_burst:
+                    time.sleep(random.uniform(0.001, 0.004))
+                    if random.random() < 0.03:
+                        in_burst = False
+                else:
+                    time.sleep(random.uniform(0.003, 0.01))
+                    if random.random() < 0.05:
+                        in_burst = True
+                with self.lock:
+                    self.request_count += 1
+                    self.ip_request_counts[self.attacker_id] = self.ip_request_counts.get(self.attacker_id, 0) + 1
             else:
-                time.sleep(random.uniform(0.003, 0.01))
-                if random.random() < 0.05:
-                    in_burst = True
-            with self.lock:
-                self.request_count += 1
-                self.ip_request_counts[self.attacker_id] = self.ip_request_counts.get(self.attacker_id, 0) + 1
+                time.sleep(0.01)
 
     # Every second, it will display how many requests occured in that second
     def display_request_count(self):
@@ -62,7 +66,7 @@ class DefenseDosMode:
 
             self.last_state = {
                 "rps": rps,
-                "confirmed": confirmed_dos,
+                "confirmed DoS": confirmed_dos,
                 "unique_ips": unique_ips,
                 "top_ip": top_ips,
                 "dominance": dominance
@@ -89,10 +93,6 @@ class DefenseDosMode:
         for t in threads:
             t.join()
         display_thread.join()
-
-if __name__ == "__main__":
-    dos_mode = DefenseDosMode()
-    dos_mode.start(num_threads=10, duration=8)
 
 class DefenseDDoS_Mode:
     def __init__(self):
@@ -124,6 +124,7 @@ class DefenseDDoS_Mode:
         self.min_dominance_dos = 0.70
         self.ddos_streak = 0
         self.dos_streak = 0
+        self.drop_rate = 0.0
     
     def simulate_incoming_requests(self):
         in_burst = False
@@ -143,6 +144,8 @@ class DefenseDDoS_Mode:
                 continue
             attacker = random.choice(attackers)
             ip = attacker
+            if self.drop_rate > 0.0 and random.random() < self.drop_rate:
+                continue
             behavior = self.behavior[attacker]
             if behavior == "heavy":
                 with self.lock:
@@ -181,8 +184,8 @@ class DefenseDDoS_Mode:
                 self.ddos_streak +=1
             else:
                 self.ddos_streak = 0
-            confirmed_dos= self.dos_streak >= self.confirm_threshold
-            confirmed_ddos= self.ddos_streak >= self.confirm_threshold
+            confirmed_dos= self.dos_streak >= self.confirm_threshold and over_limit
+            confirmed_ddos= self.ddos_streak >= self.confirm_threshold and over_limit
             if confirmed_dos:
                 print(f"Confirmed DoS attack detected! Requests per second: {rps}, Unique IPs: {unique_ips}, Top IP requests: {top_ips}, Dominance: {dominance:.2f}")
             elif confirmed_ddos:
@@ -220,14 +223,89 @@ class DefenseDDoS_Mode:
             t.join()
         display_thread.join()
 
+class DefenseAdaptive_Mode:
+    def __init__(self, dos_mode, ddos_mode):
+        self.dos_mode = dos_mode
+        self.ddos_mode = ddos_mode
+        self.running = True
+        self.level = "Normal"
+        self.history = []
+        self.state_streak = 0
+        self.required_streak = 1
+        self.current_state = None
+
+    def start(self):
+        while self.running:
+            time.sleep(1)
+            self.evaluate()
+
+    def evaluate(self):
+        dos = self.dos_mode.last_state
+        ddos = self.ddos_mode.last_state
+        if not dos or not ddos:
+            return
+        
+        rps = max(dos["rps"], ddos["rps"])
+        dominance = max(dos.get("dominance", 0), ddos.get("dominance", 0))
+        unique_ips = ddos["unique_ips"]
+        self.history.append((rps, dominance, unique_ips))
+        self.history = self.history[-10:]
+        if ddos.get("confirmed DDoS"):
+            new_state = "DDoS"
+        elif dos.get("confirmed DoS"):
+            new_state = "DoS"
+        else:
+            new_state = "Normal"
+
+        if new_state != self.current_state:
+            self.current_state = new_state
+            self.state_streak = 1 if new_state != "Normal" else 0
+        else:
+            if new_state != "Normal":
+                self.state_streak += 1
+            else:
+                self.state_streak = 0
+        
+        if new_state == "DDoS":
+            if self.state_streak >= self.required_streak:
+                self.enable_aggressive_ddos()
+        elif new_state == "DoS":
+            if self.state_streak >= self.required_streak:
+                self.enable_tight_dos()
+        else:
+            self.relax()
+    
+    def enable_tight_dos(self):
+        if self.level != "TIGHT":
+            print("Adaptive: Tigtening DoS defense, blocking attacker...")
+            self.level = "TIGHT"
+            self.dos_mode.blocked = True
+            self.dos_mode.dos_limit = 1800
+            
+
+    def enable_aggressive_ddos(self):
+        if self.level != "AGGRESSIVE":
+            self.level = "AGGRESSIVE"
+            self.ddos_mode.drop_rate = 0.25
+            self.ddos_mode.ddos_limit = 2500
+            print(f"Adaptive: Tigtening DDoS defense, (drop rate={self.ddos_mode.drop_rate})")
+
+    def relax(self):
+        if self.level != "Normal":
+            print("Adaptive: Relaxing to Normal limits")
+            self.level = "Normal"
+            self.dos_mode.blocked = False
+            self.ddos_mode.drop_rate = 0.0
+            self.dos_mode.dos_limit = 2200
+            self.ddos_mode.ddos_limit = 3100
+
 if __name__ == "__main__":
+    dos_mode = DefenseDosMode()
     ddos_mode = DefenseDDoS_Mode()
-    ddos_mode.start(num_threads=10, duration=8)
-
-# class DefenseAdaptive_Mode:
-#     def __init__(self):
-#         self.request_count = 0
-
-# # if __name__ == "__main__":
-#     adaptive_mode = DefenseAdaptive_Mode()
-#     adaptive_mode.start(num_threads=10, duration=8)
+    adaptive_mode = DefenseAdaptive_Mode(dos_mode, ddos_mode)
+    
+    threading.Thread(target=dos_mode.start, kwargs={"num_threads":10, "duration":15}, daemon=True).start()
+    threading.Thread(target=ddos_mode.start, kwargs={"num_threads":10, "duration":15}, daemon=True).start()
+    threading.Thread(target=adaptive_mode.start, daemon=True).start()
+    time.sleep(15)
+    adaptive_mode.running = False
