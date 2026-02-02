@@ -170,3 +170,17 @@
 {"rps": 2298, "confirmed DoS": false, "unique_ips": 1, "top_ip": 2298, "dominance": 1.0}
 {"rps": 2164, "confirmed DoS": false, "unique_ips": 1, "top_ip": 2164, "dominance": 1.0}
 {"rps": 2070, "confirmed DoS": false, "unique_ips": 1, "top_ip": 2070, "dominance": 1.0}
+{"rps": 2217, "confirmed DoS": false, "unique_ips": 1, "top_ip": 2217, "dominance": 1.0}
+{"rps": 2352, "confirmed DoS": false, "unique_ips": 1, "top_ip": 2352, "dominance": 1.0}
+{"rps": 2194, "confirmed DoS": false, "unique_ips": 1, "top_ip": 2194, "dominance": 1.0}
+{"rps": 2255, "confirmed DoS": false, "unique_ips": 1, "top_ip": 2255, "dominance": 1.0}
+{"rps": 2242, "confirmed DoS": false, "unique_ips": 1, "top_ip": 2242, "dominance": 1.0}
+{"rps": 2281, "confirmed DoS": true, "unique_ips": 1, "top_ip": 2281, "dominance": 1.0}
+{"rps": 2258, "confirmed DoS": true, "unique_ips": 1, "top_ip": 2258, "dominance": 1.0}
+{"rps": 0, "confirmed DoS": false, "unique_ips": 0, "top_ip": 0, "dominance": 0.0}
+{"rps": 86, "confirmed DoS": false, "unique_ips": 1, "top_ip": 86, "dominance": 1.0}
+{"rps": 2323, "confirmed DoS": false, "unique_ips": 1, "top_ip": 2323, "dominance": 1.0}
+{"rps": 2170, "confirmed DoS": false, "unique_ips": 1, "top_ip": 2170, "dominance": 1.0}
+{"rps": 2311, "confirmed DoS": false, "unique_ips": 1, "top_ip": 2311, "dominance": 1.0}
+{"rps": 2390, "confirmed DoS": false, "unique_ips": 1, "top_ip": 2390, "dominance": 1.0}
+{"rps": 2215, "confirmed DoS": true, "unique_ips": 1, "top_ip": 2215, "dominance": 1.0}

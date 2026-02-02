@@ -258,3 +258,17 @@
 {"rps": 3040, "confirmed DoS": false, "confirmed DDoS": false, "unique_ips": 18, "top_ip": 417, "dominance": 0.13717105263157894}
 {"rps": 3508, "confirmed DoS": false, "confirmed DDoS": false, "unique_ips": 35, "top_ip": 228, "dominance": 0.06499429874572406}
 {"rps": 3320, "confirmed DoS": false, "confirmed DDoS": false, "unique_ips": 25, "top_ip": 258, "dominance": 0.07771084337349397}
+{"rps": 3865, "confirmed DoS": false, "confirmed DDoS": false, "unique_ips": 20, "top_ip": 360, "dominance": 0.09314359637774904}
+{"rps": 4180, "confirmed DoS": false, "confirmed DDoS": false, "unique_ips": 9, "top_ip": 828, "dominance": 0.19808612440191387}
+{"rps": 3328, "confirmed DoS": false, "confirmed DDoS": true, "unique_ips": 13, "top_ip": 579, "dominance": 0.1739783653846154}
+{"rps": 2698, "confirmed DoS": false, "confirmed DDoS": true, "unique_ips": 9, "top_ip": 732, "dominance": 0.2713120830244626}
+{"rps": 2444, "confirmed DoS": false, "confirmed DDoS": false, "unique_ips": 30, "top_ip": 177, "dominance": 0.07242225859247135}
+{"rps": 2625, "confirmed DoS": false, "confirmed DDoS": false, "unique_ips": 33, "top_ip": 189, "dominance": 0.072}
+{"rps": 3179, "confirmed DoS": false, "confirmed DDoS": false, "unique_ips": 23, "top_ip": 276, "dominance": 0.08681975463982385}
+{"rps": 2722, "confirmed DoS": false, "confirmed DDoS": false, "unique_ips": 5, "top_ip": 952, "dominance": 0.34974283614988977}
+{"rps": 3244, "confirmed DoS": false, "confirmed DDoS": false, "unique_ips": 5, "top_ip": 1365, "dominance": 0.42077681874229345}
+{"rps": 3563, "confirmed DoS": false, "confirmed DDoS": false, "unique_ips": 25, "top_ip": 297, "dominance": 0.08335672186359809}
+{"rps": 3570, "confirmed DoS": false, "confirmed DDoS": false, "unique_ips": 18, "top_ip": 423, "dominance": 0.11848739495798319}
+{"rps": 3538, "confirmed DoS": false, "confirmed DDoS": true, "unique_ips": 21, "top_ip": 363, "dominance": 0.10260033917467495}
+{"rps": 3768, "confirmed DoS": false, "confirmed DDoS": true, "unique_ips": 14, "top_ip": 522, "dominance": 0.13853503184713375}
+{"rps": 1647, "confirmed DoS": false, "confirmed DDoS": false, "unique_ips": 6, "top_ip": 287, "dominance": 0.1742562234365513}
