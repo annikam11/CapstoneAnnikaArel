@@ -215,11 +215,20 @@ class attackAdaptiveMode:
         self.dos_attack = dos_attack
         self.ddos_attack = ddos_attack
         self.running = True
-        self.level = "Normal"
-        self.history = []
-        self.state_streak = 0
-        self.required_streak = 1
-        self.current_state = None
+
+        with self.dos_attack.lock:
+            self.dos_defaults = {
+                "burst_chance": self.dos_attack.burst_chance,
+                "exit_burst_chance": self.dos_attack.exit_burst_chance,
+                "burst_sleep_range": self.dos_attack.burst_sleep_range,
+                "normal_sleep_range": self.dos_attack.normal_sleep_range,
+            }
+
+        self.dos_boost_on = False
+        self.ddos_boost_on = False
+        self.fail_streak_dos = 0
+        self.fail_streak_ddos = 0
+        self.required_streak = 2
 
     def start(self):
         while self.running:
@@ -231,71 +240,61 @@ class attackAdaptiveMode:
             dos = dict(self.dos_attack.last_state)
         with self.ddos_attack.lock:
             ddos = dict(self.ddos_attack.last_state)
+
         if not dos or not ddos:
             return
-        
-        rps = max(dos.get("rps", 0), ddos.get("rps", 0))
-        dominance = max(dos.get("dominance", 0), ddos.get("dominance", 0))
-        unique_ips = ddos.get("unique_ips", 0)
-        self.history.append((rps, dominance, unique_ips))
-        self.history = self.history[-10:]
-        if ddos.get("impact_achieved"):
-            new_state = "DDoS"
-        elif  dos.get("impact_achieved"):
-            new_state = "DoS"
-        else:
-            new_state = "Normal"
 
-        if new_state != self.current_state:
-            self.current_state = new_state
-            self.state_streak = 1 if new_state != "Normal" else 0
+        dos_ok = bool(dos.get("impact_achieved", False))
+        ddos_ok = bool(ddos.get("impact_achieved", False))
+
+        self.fail_streak_dos  = 0 if dos_ok  else self.fail_streak_dos + 1
+        self.fail_streak_ddos = 0 if ddos_ok else self.fail_streak_ddos + 1
+
+        if (not dos_ok) and (self.fail_streak_dos >= self.required_streak):
+            self.enable_aggressive_dos()
         else:
-            if new_state != "Normal":
-                self.state_streak += 1
-            else:
-                self.state_streak = 0
-        
-        if new_state == "DDoS":
-            if self.state_streak >= self.required_streak:
-                self.enable_aggressive_ddos()
-        elif new_state == "DoS":
-            if self.state_streak >= self.required_streak:
-                self.enable_aggressive_dos()
+            self.disable_aggressive_dos()
+
+        if (not ddos_ok) and (self.fail_streak_ddos >= self.required_streak):
+            self.enable_aggressive_ddos()
         else:
-            self.relax()
-    
+            self.disable_aggressive_ddos()
+
     def enable_aggressive_dos(self):
-        if self.level != "ATTACK":
-            self.level = "ATTACK"
-            print("Adaptive: Attacking DoS mode with more frequency...")
-            self.dos_attack.burst_chance = 0.8
-            self.dos_attack.exit_burst_chance = 0.2
-            self.dos_attack.burst_sleep_range = (0.0001, 0.003)
-            self.dos_attack.normal_sleep_range = (0.002, 0.007)
-            self.dos_attack.blocked = False
+        if not self.dos_boost_on:
+            self.dos_boost_on = True
+            print(f"Adaptive: boosting DoS...")
+            with self.dos_attack.lock:
+                self.dos_attack.burst_chance = 0.8
+                self.dos_attack.exit_burst_chance = 0.2
+                self.dos_attack.burst_sleep_range = (0.0001, 0.0015)
+                self.dos_attack.normal_sleep_range = (0.0025, 0.005)
+    def disable_aggressive_dos(self):
+        if self.dos_boost_on:
+            self.dos_boost_on = False
+            print("Adaptive: DoS back to normal")
+            with self.dos_attack.lock:
+                self.dos_attack.burst_chance = self.dos_defaults["burst_chance"]
+                self.dos_attack.exit_burst_chance = self.dos_defaults["exit_burst_chance"]
+                self.dos_attack.burst_sleep_range = self.dos_defaults["burst_sleep_range"]
+                self.dos_attack.normal_sleep_range = self.dos_defaults["normal_sleep_range"]
 
     def enable_aggressive_ddos(self):
-        if self.level != "AGGRESSIVE":
-            self.level = "AGGRESSIVE"
+        if not self.ddos_boost_on:
+            self.ddos_boost_on = True
+            print("Adaptive: boosting DDoS...")
             with self.ddos_attack.lock:
                 self.ddos_attack.adaptive_override = True
-                self.active_ddos_attackers = self.ddos_attack.attacker_pool.copy()
-                self.ddos_attack.active_attackers = self.active_ddos_attackers
-            print(f"Adaptive: Attacking DDoS mode with more attackers (active attackers={len(self.active_ddos_attackers)})...")
+                self.ddos_attack.active_attackers = self.ddos_attack.attacker_pool.copy()
 
-    def relax(self):
-        if self.level != "Normal":
-            print("Adaptive: Relaxing to Normal limits for DoS and DDoS")
-            self.level = "Normal"
-            self.dos_attack.blocked = False
+    def disable_aggressive_ddos(self):
+        if self.ddos_boost_on:
+            self.ddos_boost_on = False
+            print("Adaptive: DDoS back to normal")
             with self.ddos_attack.lock:
                 self.ddos_attack.adaptive_override = False
                 k = random.randint(5, 20)
                 self.ddos_attack.active_attackers = random.sample(self.ddos_attack.attacker_pool, k)
-            self.dos_attack.burst_chance = 0.03
-            self.dos_attack.exit_burst_chance = 0.05
-            self.dos_attack.burst_sleep_range = (0.001, 0.004)
-            self.dos_attack.normal_sleep_range = (0.003, 0.01)
 
 if __name__ == "__main__":
     dos_attack = attackDoSMode()
@@ -307,4 +306,5 @@ if __name__ == "__main__":
     threading.Thread(target=adaptive_mode.start, daemon=True).start()
     time.sleep(15)
     adaptive_mode.running = False
-
+    dos_attack.running = False
+    ddos_attack.running = False
