@@ -296,15 +296,3 @@ class attackAdaptiveMode:
                 k = random.randint(5, 20)
                 self.ddos_attack.active_attackers = random.sample(self.ddos_attack.attacker_pool, k)
 
-if __name__ == "__main__":
-    dos_attack = attackDoSMode()
-    ddos_attack = attackDDoSMode()
-    adaptive_mode = attackAdaptiveMode(dos_attack, ddos_attack)
-    
-    threading.Thread(target=dos_attack.start, kwargs={"num_threads":10, "duration":15}, daemon=True).start()
-    threading.Thread(target=ddos_attack.start, kwargs={"num_threads":10, "duration":15}, daemon=True).start()
-    threading.Thread(target=adaptive_mode.start, daemon=True).start()
-    time.sleep(15)
-    adaptive_mode.running = False
-    dos_attack.running = False
-    ddos_attack.running = False

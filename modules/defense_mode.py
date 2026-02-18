@@ -298,14 +298,3 @@ class DefenseAdaptive_Mode:
             self.ddos_mode.drop_rate = 0.0
             self.dos_mode.dos_limit = 2200
             self.ddos_mode.ddos_limit = 3100
-
-if __name__ == "__main__":
-    dos_mode = DefenseDosMode()
-    ddos_mode = DefenseDDoS_Mode()
-    adaptive_mode = DefenseAdaptive_Mode(dos_mode, ddos_mode)
-    
-    threading.Thread(target=dos_mode.start, kwargs={"num_threads":10, "duration":15}, daemon=True).start()
-    threading.Thread(target=ddos_mode.start, kwargs={"num_threads":10, "duration":15}, daemon=True).start()
-    threading.Thread(target=adaptive_mode.start, daemon=True).start()
-    time.sleep(15)
-    adaptive_mode.running = False

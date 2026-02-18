@@ -1,12 +1,19 @@
-from modules.ui import start_ui
-from modules.defense_mode import DefenseDosMode, DefenseDDoS_Mode, DefenseAdaptive_Mode
+# main.py
+from modules.controller import SimulationController
+from modules.attack_mode import attackDoSMode, attackDDoSMode, attackAdaptiveMode
+from modules.ui import MainWindow, ModeRefs
 
-def main():
-    start_ui()
-    DefenseDosMode().start(num_threads=10, duration=8)
-    DefenseAdaptive_Mode()
-    DefenseDDoS_Mode()
+def run():
+    controller = SimulationController(duration=15)
 
+    dos = attackDoSMode()
+    ddos = attackDDoSMode()
+    adaptive = attackAdaptiveMode(dos, ddos)
+
+    modes = ModeRefs(dos=dos, ddos=ddos, adaptive=adaptive)
+    main(controller, modes)
 
 if __name__ == "__main__":
-    main()
+    run()
+
+
