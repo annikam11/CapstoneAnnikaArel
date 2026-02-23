@@ -25,11 +25,11 @@ class DefenseDosMode:
         while self.running:
             if self.blocked == False:
                 if in_burst:
-                    time.sleep(random.uniform(0.001, 0.004))
+                    time.sleep(random.uniform(0.0015, 0.0045))
                     if random.random() < 0.03:
                         in_burst = False
                 else:
-                    time.sleep(random.uniform(0.003, 0.01))
+                    time.sleep(random.uniform(0.0006, 0.0018))
                     if random.random() < 0.05:
                         in_burst = True
                 with self.lock:
@@ -80,11 +80,11 @@ class DefenseDosMode:
 
     # Start threads to simulate incoming requests
         for _ in range(num_threads):
-            t = threading.Thread(target=self.simulate_incoming_requests)
+            t = threading.Thread(target=self.simulate_incoming_requests, daemon=True)
             t.start()
             threads.append(t)
         
-        display_thread = threading.Thread(target=self.display_request_count)
+        display_thread = threading.Thread(target=self.display_request_count, daemon=True)
         display_thread.start()
 
         time.sleep(duration)
@@ -94,7 +94,7 @@ class DefenseDosMode:
             t.join()
         display_thread.join()
 
-class DefenseDDoS_Mode:
+class DefenseDDoSMode:
     def __init__(self):
         self.request_count = 0
         self.lock = threading.Lock()
@@ -130,11 +130,11 @@ class DefenseDDoS_Mode:
         in_burst = False
         while self.running:
             if in_burst:
-                time.sleep(random.uniform(0.001, 0.004))
+                time.sleep(random.uniform(0.0015, 0.0045))
                 if random.random() < 0.03:
                     in_burst = False
             else:
-                time.sleep(random.uniform(0.003, 0.01))
+                time.sleep(random.uniform(0.0006, 0.0018))
                 if random.random() < 0.05:
                     in_burst = True
             with self.lock:
@@ -210,11 +210,11 @@ class DefenseDDoS_Mode:
         threads = []
 
         for _ in range(num_threads):
-            t = threading.Thread(target=self.simulate_incoming_requests)
+            t = threading.Thread(target=self.simulate_incoming_requests, daemon=True)
             t.start()
             threads.append(t)
 
-        display_thread = threading.Thread(target=self.display_request_count)
+        display_thread = threading.Thread(target=self.display_request_count, daemon=True)
         display_thread.start()
 
         time.sleep(duration)
@@ -223,7 +223,7 @@ class DefenseDDoS_Mode:
             t.join()
         display_thread.join()
 
-class DefenseAdaptive_Mode:
+class DefenseAdaptiveMode:
     def __init__(self, dos_mode, ddos_mode):
         self.dos_mode = dos_mode
         self.ddos_mode = ddos_mode
