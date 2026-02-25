@@ -5,6 +5,7 @@ import sys
 from modules.ui import ArelGuardApp
 
 
+
 def run():
     app = ArelGuardApp()
     app.mainloop()

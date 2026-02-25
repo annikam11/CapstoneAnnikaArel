@@ -759,3 +759,17 @@
 {"rps": 3439, "impact_achieved": true, "unique_ips": 31, "top_ip": 285, "dominance": 0.08287292817679558}
 {"rps": 3439, "impact_achieved": true, "unique_ips": 42, "top_ip": 219, "dominance": 0.0636813027042745}
 {"rps": 3963, "impact_achieved": true, "unique_ips": 25, "top_ip": 300, "dominance": 0.0757002271006813}
+{"rps": 3603, "impact_achieved": false, "unique_ips": 15, "top_ip": 525, "dominance": 0.14571190674437967}
+{"rps": 4070, "impact_achieved": false, "unique_ips": 44, "top_ip": 273, "dominance": 0.06707616707616708}
+{"rps": 4752, "impact_achieved": true, "unique_ips": 24, "top_ip": 375, "dominance": 0.07891414141414141}
+{"rps": 3326, "impact_achieved": true, "unique_ips": 30, "top_ip": 336, "dominance": 0.10102224894768491}
+{"rps": 4392, "impact_achieved": true, "unique_ips": 21, "top_ip": 450, "dominance": 0.10245901639344263}
+{"rps": 4461, "impact_achieved": true, "unique_ips": 31, "top_ip": 333, "dominance": 0.07464694014794888}
+{"rps": 3889, "impact_achieved": true, "unique_ips": 9, "top_ip": 957, "dominance": 0.2460786834661867}
+{"rps": 4740, "impact_achieved": true, "unique_ips": 17, "top_ip": 591, "dominance": 0.12468354430379747}
+{"rps": 3798, "impact_achieved": true, "unique_ips": 44, "top_ip": 228, "dominance": 0.06003159557661927}
+{"rps": 4368, "impact_achieved": true, "unique_ips": 30, "top_ip": 348, "dominance": 0.07967032967032966}
+{"rps": 3389, "impact_achieved": true, "unique_ips": 8, "top_ip": 748, "dominance": 0.22071407494836234}
+{"rps": 3930, "impact_achieved": true, "unique_ips": 10, "top_ip": 870, "dominance": 0.22137404580152673}
+{"rps": 3562, "impact_achieved": true, "unique_ips": 28, "top_ip": 228, "dominance": 0.06400898371701291}
+{"rps": 3799, "impact_achieved": true, "unique_ips": 25, "top_ip": 327, "dominance": 0.08607528296920242}

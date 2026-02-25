@@ -1,0 +1,3 @@
+{"rps": 4822, "confirmed_DoS": false, "confirmed_DDoS": false, "unique_ips": 10, "top_ip": 1104, "dominance": 0.22895064288676897}
+{"rps": 5201, "confirmed_DoS": false, "confirmed_DDoS": false, "unique_ips": 29, "top_ip": 390, "dominance": 0.07498557969621227}
+{"rps": 5157, "confirmed_DoS": false, "confirmed_DDoS": true, "unique_ips": 20, "top_ip": 504, "dominance": 0.09773123909249563}

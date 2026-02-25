@@ -369,15 +369,23 @@ class ArelGuardApp(tk.Tk):
         super().__init__()
 
         # Logo
-        root = Path(__file__).resolve().parent.parent
-        logo_path = root / "assets" / "images" / "ArelGuardLogo.png"
+        def resource_path(relative: str) -> Path:
+            # PyInstaller onefile temp folder
+            if hasattr(sys, "_MEIPASS"):
+                return Path(sys._MEIPASS) / relative
+
+            # Dev: modules/ui.py -> project root
+            return Path(__file__).resolve().parent.parent / relative
+
+
+        logo_path = resource_path("assets/images/ArelGuardLogo.png")
 
         self.logo_image = None
         if logo_path.exists():
             img = Image.open(logo_path)
             img = img.resize((140, 140), Image.LANCZOS)
             self.logo_image = ImageTk.PhotoImage(img)
-
+        
         self.title("ArelGuard")
         self.geometry("1200x750")
         self.minsize(1050, 650)
@@ -704,8 +712,39 @@ class ArelGuardApp(tk.Tk):
         header = tk.Frame(self.content, bg=COL_BG)
         header.pack(fill="x", padx=28, pady=(22, 14))
 
-        tk.Label(header, text=title, fg=COL_TEXT, bg=COL_BG, font=("Segoe UI", 26, "bold")).pack(anchor="center")
+        # Brand title: Arel (red) + Guard (blue) when the title is exactly "ArelGuard"
+        if title.strip() == "ArelGuard":
+            brand = tk.Frame(header, bg=COL_BG)
+            brand.pack(anchor="center")
 
+            arel = tk.Label(
+                brand,
+                text="Arel",
+                fg=COL_ATTACK_PANEL,
+                bg=COL_BG,
+                font=("Segoe UI", 26, "bold"),
+                padx=0,
+                pady=0,
+                borderwidth=0,
+                highlightthickness=0
+            )
+            arel.pack(side="left")
+
+            guard = tk.Label(
+                brand,
+                text="Guard",
+            fg=COL_DEFENSE_PANEL,
+            bg=COL_BG,
+            font=("Segoe UI", 26, "bold"),
+            padx=0,
+            pady=0,
+            borderwidth=0,
+            highlightthickness=0
+            )
+            guard.pack(side="left")
+        else:
+            tk.Label(header, text=title, fg=COL_TEXT, bg=COL_BG,
+                font=("Segoe UI", 26, "bold")).pack(anchor="center")
         if subtitle:
             lbl = tk.Label(header, text=subtitle, fg=COL_MUTED, bg=COL_BG, font=("Segoe UI", 12), wraplength=1, justify="center")
             lbl.pack(anchor="center", pady=(6, 0))
@@ -1541,9 +1580,17 @@ class ArelGuardApp(tk.Tk):
         )
 
     def show_attack(self, guided: bool = False):
+        if guided:
+            self._lab_index = 0
+            self._step_index = 0
+            self._quiz_done = False
         self._build_mode_page("Attack", guided)
 
     def show_defense(self, guided: bool = False):
+        if guided:
+            self._lab_index = 0
+            self._step_index = 0
+            self._quiz_done = False
         self._build_mode_page("Defense", guided)
 
     def show_help(self):
