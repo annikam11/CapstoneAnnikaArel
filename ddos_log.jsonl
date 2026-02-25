@@ -422,3 +422,301 @@
 {"rps": 4000, "confirmed DoS": false, "confirmed DDoS": false, "unique_ips": 40, "top_ip": 228, "dominance": 0.057}
 {"rps": 3279, "confirmed DoS": false, "confirmed DDoS": true, "unique_ips": 13, "top_ip": 522, "dominance": 0.15919487648673375}
 {"rps": 3424, "confirmed DoS": false, "confirmed DDoS": true, "unique_ips": 15, "top_ip": 414, "dominance": 0.12091121495327103}
+{"rps": 4083, "confirmed DoS": false, "confirmed DDoS": false, "unique_ips": 12, "top_ip": 684, "dominance": 0.16752387950036737}
+{"rps": 3686, "confirmed DoS": false, "confirmed DDoS": false, "unique_ips": 45, "top_ip": 186, "dominance": 0.050461204557786216}
+{"rps": 2731, "confirmed DoS": false, "confirmed DDoS": false, "unique_ips": 6, "top_ip": 485, "dominance": 0.1775906261442695}
+{"rps": 3477, "confirmed DoS": false, "confirmed DDoS": false, "unique_ips": 39, "top_ip": 237, "dominance": 0.06816220880069025}
+{"rps": 3231, "confirmed DoS": false, "confirmed DDoS": false, "unique_ips": 20, "top_ip": 369, "dominance": 0.11420612813370473}
+{"rps": 2682, "confirmed DoS": false, "confirmed DDoS": false, "unique_ips": 31, "top_ip": 177, "dominance": 0.06599552572706935}
+{"rps": 2224, "confirmed DoS": false, "confirmed DDoS": false, "unique_ips": 20, "top_ip": 249, "dominance": 0.11196043165467626}
+{"rps": 2603, "confirmed DoS": false, "confirmed DDoS": false, "unique_ips": 34, "top_ip": 198, "dominance": 0.07606607760276604}
+{"rps": 2872, "confirmed DoS": false, "confirmed DDoS": false, "unique_ips": 30, "top_ip": 243, "dominance": 0.0846100278551532}
+{"rps": 2812, "confirmed DoS": false, "confirmed DDoS": false, "unique_ips": 19, "top_ip": 363, "dominance": 0.1290896159317212}
+{"rps": 2585, "confirmed DoS": false, "confirmed DDoS": false, "unique_ips": 36, "top_ip": 219, "dominance": 0.08471953578336557}
+{"rps": 2394, "confirmed DoS": false, "confirmed DDoS": false, "unique_ips": 35, "top_ip": 192, "dominance": 0.08020050125313283}
+{"rps": 1896, "confirmed DoS": false, "confirmed DDoS": false, "unique_ips": 8, "top_ip": 396, "dominance": 0.2088607594936709}
+{"rps": 2717, "confirmed DoS": false, "confirmed DDoS": false, "unique_ips": 28, "top_ip": 243, "dominance": 0.08943687891056312}
+{"rps": 1676, "confirmed DoS": false, "confirmed DDoS": false, "unique_ips": 20, "top_ip": 186, "dominance": 0.11097852028639618}
+{"rps": 5301, "confirmed DoS": false, "confirmed DDoS": false, "unique_ips": 17, "top_ip": 648, "dominance": 0.12224108658743633}
+{"rps": 4108, "confirmed DoS": false, "confirmed DDoS": false, "unique_ips": 5, "top_ip": 1186, "dominance": 0.2887049659201558}
+{"rps": 4125, "confirmed DoS": false, "confirmed DDoS": true, "unique_ips": 12, "top_ip": 687, "dominance": 0.16654545454545455}
+{"rps": 2628, "confirmed DoS": false, "confirmed DDoS": true, "unique_ips": 21, "top_ip": 219, "dominance": 0.08333333333333333}
+{"rps": 1656, "confirmed DoS": false, "confirmed DDoS": false, "unique_ips": 7, "top_ip": 364, "dominance": 0.21980676328502416}
+{"rps": 1329, "confirmed DoS": false, "confirmed DDoS": false, "unique_ips": 28, "top_ip": 120, "dominance": 0.09029345372460497}
+{"rps": 1631, "confirmed DoS": false, "confirmed DDoS": false, "unique_ips": 29, "top_ip": 138, "dominance": 0.08461066830165542}
+{"rps": 1136, "confirmed DoS": false, "confirmed DDoS": false, "unique_ips": 30, "top_ip": 90, "dominance": 0.07922535211267606}
+{"rps": 1631, "confirmed DoS": false, "confirmed DDoS": false, "unique_ips": 20, "top_ip": 198, "dominance": 0.1213979153893317}
+{"rps": 1622, "confirmed DoS": false, "confirmed DDoS": false, "unique_ips": 23, "top_ip": 128, "dominance": 0.07891491985203453}
+{"rps": 3434, "confirmed DoS": false, "confirmed DDoS": false, "unique_ips": 32, "top_ip": 240, "dominance": 0.06988934187536401}
+{"rps": 3035, "confirmed DoS": false, "confirmed DDoS": false, "unique_ips": 37, "top_ip": 195, "dominance": 0.0642504118616145}
+{"rps": 2723, "confirmed DoS": false, "confirmed DDoS": false, "unique_ips": 36, "top_ip": 204, "dominance": 0.0749173705471906}
+{"rps": 2702, "confirmed DoS": false, "confirmed DDoS": false, "unique_ips": 28, "top_ip": 222, "dominance": 0.08216136195410807}
+{"rps": 1665, "confirmed DoS": false, "confirmed DDoS": false, "unique_ips": 11, "top_ip": 345, "dominance": 0.2072072072072072}
+{"rps": 5290, "confirmed DoS": false, "confirmed DDoS": false, "unique_ips": 14, "top_ip": 741, "dominance": 0.1400756143667297}
+{"rps": 5263, "confirmed DoS": false, "confirmed DDoS": false, "unique_ips": 16, "top_ip": 633, "dominance": 0.12027360820824624}
+{"rps": 3060, "confirmed DoS": false, "confirmed DDoS": false, "unique_ips": 19, "top_ip": 411, "dominance": 0.13431372549019607}
+{"rps": 4382, "confirmed DoS": false, "confirmed DDoS": false, "unique_ips": 16, "top_ip": 512, "dominance": 0.11684162482884528}
+{"rps": 4192, "confirmed DoS": false, "confirmed DDoS": false, "unique_ips": 30, "top_ip": 336, "dominance": 0.08015267175572519}
+{"rps": 4551, "confirmed DoS": false, "confirmed DDoS": true, "unique_ips": 27, "top_ip": 399, "dominance": 0.08767303889255108}
+{"rps": 3910, "confirmed DoS": false, "confirmed DDoS": true, "unique_ips": 8, "top_ip": 1125, "dominance": 0.2877237851662404}
+{"rps": 1473, "confirmed DoS": false, "confirmed DDoS": false, "unique_ips": 20, "top_ip": 183, "dominance": 0.12423625254582485}
+{"rps": 1311, "confirmed DoS": false, "confirmed DDoS": false, "unique_ips": 28, "top_ip": 111, "dominance": 0.08466819221967964}
+{"rps": 1294, "confirmed DoS": false, "confirmed DDoS": false, "unique_ips": 15, "top_ip": 186, "dominance": 0.1437403400309119}
+{"rps": 1534, "confirmed DoS": false, "confirmed DDoS": false, "unique_ips": 40, "top_ip": 102, "dominance": 0.06649282920469361}
+{"rps": 1620, "confirmed DoS": false, "confirmed DDoS": false, "unique_ips": 42, "top_ip": 117, "dominance": 0.07222222222222222}
+{"rps": 1084, "confirmed DoS": false, "confirmed DDoS": false, "unique_ips": 39, "top_ip": 63, "dominance": 0.058118081180811805}
+{"rps": 1209, "confirmed DoS": false, "confirmed DDoS": false, "unique_ips": 22, "top_ip": 156, "dominance": 0.12903225806451613}
+{"rps": 1261, "confirmed DoS": false, "confirmed DDoS": false, "unique_ips": 15, "top_ip": 168, "dominance": 0.13322759714512292}
+{"rps": 5901, "confirmed DoS": false, "confirmed DDoS": false, "unique_ips": 12, "top_ip": 784, "dominance": 0.132858837485172}
+{"rps": 2001, "confirmed DoS": false, "confirmed DDoS": false, "unique_ips": 15, "top_ip": 342, "dominance": 0.17091454272863568}
+{"rps": 2565, "confirmed DoS": false, "confirmed DDoS": false, "unique_ips": 44, "top_ip": 156, "dominance": 0.0608187134502924}
+{"rps": 2814, "confirmed DoS": false, "confirmed DDoS": false, "unique_ips": 23, "top_ip": 279, "dominance": 0.09914712153518124}
+{"rps": 2467, "confirmed DoS": false, "confirmed DDoS": false, "unique_ips": 44, "top_ip": 150, "dominance": 0.060802594244021076}
+{"rps": 2342, "confirmed DoS": false, "confirmed DDoS": false, "unique_ips": 26, "top_ip": 213, "dominance": 0.09094790777113577}
+{"rps": 2578, "confirmed DoS": false, "confirmed DDoS": false, "unique_ips": 5, "top_ip": 848, "dominance": 0.32893716058960437}
+{"rps": 2451, "confirmed DoS": false, "confirmed DDoS": false, "unique_ips": 17, "top_ip": 321, "dominance": 0.13096695226438188}
+{"rps": 3438, "confirmed DoS": false, "confirmed DDoS": false, "unique_ips": 36, "top_ip": 207, "dominance": 0.060209424083769635}
+{"rps": 2574, "confirmed DoS": false, "confirmed DDoS": false, "unique_ips": 20, "top_ip": 342, "dominance": 0.13286713286713286}
+{"rps": 2926, "confirmed DoS": false, "confirmed DDoS": false, "unique_ips": 20, "top_ip": 345, "dominance": 0.11790840738209159}
+{"rps": 3816, "confirmed DoS": false, "confirmed DDoS": false, "unique_ips": 24, "top_ip": 369, "dominance": 0.09669811320754718}
+{"rps": 2467, "confirmed DoS": false, "confirmed DDoS": false, "unique_ips": 23, "top_ip": 249, "dominance": 0.10093230644507499}
+{"rps": 3290, "confirmed DoS": false, "confirmed DDoS": false, "unique_ips": 28, "top_ip": 225, "dominance": 0.06838905775075987}
+{"rps": 1307, "confirmed DoS": false, "confirmed DDoS": false, "unique_ips": 20, "top_ip": 147, "dominance": 0.11247130833970925}
+{"rps": 5144, "confirmed DoS": false, "confirmed DDoS": false, "unique_ips": 14, "top_ip": 720, "dominance": 0.13996889580093314}
+{"rps": 5377, "confirmed DoS": false, "confirmed DDoS": false, "unique_ips": 7, "top_ip": 1503, "dominance": 0.2795238980844337}
+{"rps": 5164, "confirmed DoS": false, "confirmed DDoS": true, "unique_ips": 42, "top_ip": 285, "dominance": 0.055189775367931834}
+{"rps": 5723, "confirmed DoS": false, "confirmed DDoS": true, "unique_ips": 5, "top_ip": 1770, "dominance": 0.30927835051546393}
+{"rps": 2744, "confirmed DoS": false, "confirmed DDoS": true, "unique_ips": 26, "top_ip": 231, "dominance": 0.08418367346938775}
+{"rps": 4208, "confirmed DoS": false, "confirmed DDoS": true, "unique_ips": 20, "top_ip": 450, "dominance": 0.10693916349809886}
+{"rps": 3757, "confirmed DoS": false, "confirmed DDoS": true, "unique_ips": 44, "top_ip": 213, "dominance": 0.05669417088102209}
+{"rps": 2911, "confirmed DoS": false, "confirmed DDoS": true, "unique_ips": 24, "top_ip": 252, "dominance": 0.08656818962555823}
+{"rps": 1279, "confirmed DoS": false, "confirmed DDoS": false, "unique_ips": 34, "top_ip": 75, "dominance": 0.058639562157935886}
+{"rps": 1253, "confirmed DoS": false, "confirmed DDoS": false, "unique_ips": 43, "top_ip": 69, "dominance": 0.05506783719074222}
+{"rps": 1485, "confirmed DoS": false, "confirmed DDoS": false, "unique_ips": 11, "top_ip": 276, "dominance": 0.18585858585858586}
+{"rps": 1781, "confirmed DoS": false, "confirmed DDoS": false, "unique_ips": 23, "top_ip": 150, "dominance": 0.08422234699606962}
+{"rps": 1485, "confirmed DoS": false, "confirmed DDoS": false, "unique_ips": 25, "top_ip": 111, "dominance": 0.07474747474747474}
+{"rps": 1696, "confirmed DoS": false, "confirmed DDoS": false, "unique_ips": 7, "top_ip": 399, "dominance": 0.23525943396226415}
+{"rps": 1061, "confirmed DoS": false, "confirmed DDoS": false, "unique_ips": 38, "top_ip": 69, "dominance": 0.06503298774740811}
+{"rps": 2861, "confirmed DoS": false, "confirmed DDoS": false, "unique_ips": 16, "top_ip": 405, "dominance": 0.14155889549108702}
+{"rps": 3812, "confirmed DoS": false, "confirmed DDoS": false, "unique_ips": 19, "top_ip": 362, "dominance": 0.09496327387198321}
+{"rps": 4484, "confirmed DoS": false, "confirmed DDoS": false, "unique_ips": 35, "top_ip": 297, "dominance": 0.06623550401427297}
+{"rps": 1448, "confirmed DoS": false, "confirmed DDoS": false, "unique_ips": 35, "top_ip": 99, "dominance": 0.06837016574585636}
+{"rps": 1137, "confirmed DoS": false, "confirmed DDoS": false, "unique_ips": 42, "top_ip": 78, "dominance": 0.06860158311345646}
+{"rps": 1406, "confirmed DoS": false, "confirmed DDoS": false, "unique_ips": 19, "top_ip": 213, "dominance": 0.1514935988620199}
+{"rps": 1057, "confirmed DoS": false, "confirmed DDoS": false, "unique_ips": 26, "top_ip": 111, "dominance": 0.10501419110690634}
+{"rps": 1473, "confirmed DoS": false, "confirmed DDoS": false, "unique_ips": 6, "top_ip": 456, "dominance": 0.3095723014256619}
+{"rps": 910, "confirmed DoS": false, "confirmed DDoS": false, "unique_ips": 27, "top_ip": 90, "dominance": 0.0989010989010989}
+{"rps": 1504, "confirmed DoS": false, "confirmed DDoS": false, "unique_ips": 31, "top_ip": 120, "dominance": 0.0797872340425532}
+{"rps": 1105, "confirmed DoS": false, "confirmed DDoS": false, "unique_ips": 25, "top_ip": 108, "dominance": 0.09773755656108597}
+{"rps": 1278, "confirmed DoS": false, "confirmed DDoS": false, "unique_ips": 44, "top_ip": 84, "dominance": 0.06572769953051644}
+{"rps": 1215, "confirmed DoS": false, "confirmed DDoS": false, "unique_ips": 40, "top_ip": 66, "dominance": 0.05432098765432099}
+{"rps": 1594, "confirmed DoS": false, "confirmed DDoS": false, "unique_ips": 36, "top_ip": 114, "dominance": 0.07151819322459223}
+{"rps": 625, "confirmed DoS": false, "confirmed DDoS": false, "unique_ips": 45, "top_ip": 36, "dominance": 0.0576}
+{"rps": 5243, "confirmed DoS": false, "confirmed DDoS": false, "unique_ips": 16, "top_ip": 654, "dominance": 0.12473774556551592}
+{"rps": 5112, "confirmed DoS": false, "confirmed DDoS": false, "unique_ips": 29, "top_ip": 423, "dominance": 0.08274647887323944}
+{"rps": 4618, "confirmed DoS": false, "confirmed DDoS": true, "unique_ips": 37, "top_ip": 264, "dominance": 0.05716760502381984}
+{"rps": 4951, "confirmed DoS": false, "confirmed DDoS": true, "unique_ips": 10, "top_ip": 1107, "dominance": 0.2235911936982428}
+{"rps": 3658, "confirmed DoS": false, "confirmed DDoS": true, "unique_ips": 43, "top_ip": 243, "dominance": 0.06642974302897758}
+{"rps": 3793, "confirmed DoS": false, "confirmed DDoS": true, "unique_ips": 42, "top_ip": 216, "dominance": 0.056947007645663066}
+{"rps": 4067, "confirmed DoS": false, "confirmed DDoS": true, "unique_ips": 35, "top_ip": 264, "dominance": 0.06491271207278092}
+{"rps": 3580, "confirmed DoS": false, "confirmed DDoS": true, "unique_ips": 15, "top_ip": 418, "dominance": 0.11675977653631285}
+{"rps": 3247, "confirmed DoS": false, "confirmed DDoS": true, "unique_ips": 27, "top_ip": 240, "dominance": 0.07391438250692947}
+{"rps": 3616, "confirmed DoS": false, "confirmed DDoS": true, "unique_ips": 26, "top_ip": 318, "dominance": 0.08794247787610619}
+{"rps": 3681, "confirmed DoS": false, "confirmed DDoS": true, "unique_ips": 14, "top_ip": 615, "dominance": 0.16707416462917685}
+{"rps": 3390, "confirmed DoS": false, "confirmed DDoS": true, "unique_ips": 33, "top_ip": 246, "dominance": 0.07256637168141593}
+{"rps": 3290, "confirmed DoS": false, "confirmed DDoS": true, "unique_ips": 33, "top_ip": 192, "dominance": 0.05835866261398176}
+{"rps": 3173, "confirmed DoS": false, "confirmed DDoS": true, "unique_ips": 44, "top_ip": 177, "dominance": 0.055783170501103055}
+{"rps": 2920, "confirmed DoS": false, "confirmed DDoS": true, "unique_ips": 35, "top_ip": 204, "dominance": 0.06986301369863014}
+{"rps": 5278, "confirmed DoS": false, "confirmed DDoS": false, "unique_ips": 12, "top_ip": 885, "dominance": 0.16767715043577114}
+{"rps": 4976, "confirmed DoS": false, "confirmed DDoS": false, "unique_ips": 42, "top_ip": 246, "dominance": 0.049437299035369774}
+{"rps": 5423, "confirmed DoS": false, "confirmed DDoS": true, "unique_ips": 38, "top_ip": 270, "dominance": 0.049787940254471696}
+{"rps": 4712, "confirmed DoS": false, "confirmed DDoS": true, "unique_ips": 17, "top_ip": 579, "dominance": 0.12287775891341256}
+{"rps": 3144, "confirmed DoS": false, "confirmed DDoS": true, "unique_ips": 18, "top_ip": 384, "dominance": 0.12213740458015267}
+{"rps": 3528, "confirmed DoS": false, "confirmed DDoS": true, "unique_ips": 38, "top_ip": 213, "dominance": 0.06037414965986394}
+{"rps": 3331, "confirmed DoS": false, "confirmed DDoS": true, "unique_ips": 26, "top_ip": 273, "dominance": 0.08195737015911138}
+{"rps": 3740, "confirmed DoS": false, "confirmed DDoS": true, "unique_ips": 34, "top_ip": 270, "dominance": 0.07219251336898395}
+{"rps": 4065, "confirmed DoS": false, "confirmed DDoS": true, "unique_ips": 24, "top_ip": 327, "dominance": 0.08044280442804429}
+{"rps": 3551, "confirmed DoS": false, "confirmed DDoS": true, "unique_ips": 35, "top_ip": 228, "dominance": 0.06420726555899746}
+{"rps": 4300, "confirmed DoS": false, "confirmed DDoS": true, "unique_ips": 18, "top_ip": 468, "dominance": 0.10883720930232559}
+{"rps": 2329, "confirmed DoS": false, "confirmed DDoS": false, "unique_ips": 5, "top_ip": 518, "dominance": 0.2224130528123658}
+{"rps": 4107, "confirmed DoS": false, "confirmed DDoS": false, "unique_ips": 19, "top_ip": 438, "dominance": 0.10664718772826881}
+{"rps": 2862, "confirmed DoS": false, "confirmed DDoS": false, "unique_ips": 8, "top_ip": 700, "dominance": 0.2445842068483578}
+{"rps": 3758, "confirmed DoS": false, "confirmed DDoS": true, "unique_ips": 38, "top_ip": 234, "dominance": 0.06226716338477914}
+{"rps": 3021, "confirmed DoS": false, "confirmed DDoS": false, "unique_ips": 13, "top_ip": 435, "dominance": 0.14399205561072492}
+{"rps": 1167, "confirmed DoS": false, "confirmed DDoS": false, "unique_ips": 11, "top_ip": 156, "dominance": 0.13367609254498714}
+{"rps": 1063, "confirmed DoS": false, "confirmed DDoS": false, "unique_ips": 19, "top_ip": 117, "dominance": 0.11006585136406397}
+{"rps": 1091, "confirmed DoS": false, "confirmed DDoS": false, "unique_ips": 40, "top_ip": 54, "dominance": 0.04949587534372136}
+{"rps": 926, "confirmed DoS": false, "confirmed DDoS": false, "unique_ips": 16, "top_ip": 108, "dominance": 0.11663066954643629}
+{"rps": 1046, "confirmed DoS": false, "confirmed DDoS": false, "unique_ips": 32, "top_ip": 63, "dominance": 0.06022944550669216}
+{"rps": 953, "confirmed DoS": false, "confirmed DDoS": false, "unique_ips": 32, "top_ip": 74, "dominance": 0.0776495278069255}
+{"rps": 979, "confirmed DoS": false, "confirmed DDoS": false, "unique_ips": 22, "top_ip": 108, "dominance": 0.11031664964249234}
+{"rps": 1304, "confirmed DoS": false, "confirmed DDoS": false, "unique_ips": 27, "top_ip": 105, "dominance": 0.08052147239263803}
+{"rps": 1003, "confirmed DoS": false, "confirmed DDoS": false, "unique_ips": 43, "top_ip": 63, "dominance": 0.06281156530408774}
+{"rps": 982, "confirmed DoS": false, "confirmed DDoS": false, "unique_ips": 19, "top_ip": 108, "dominance": 0.109979633401222}
+{"rps": 1171, "confirmed DoS": false, "confirmed DDoS": false, "unique_ips": 12, "top_ip": 186, "dominance": 0.15883859948761742}
+{"rps": 939, "confirmed DoS": false, "confirmed DDoS": false, "unique_ips": 28, "top_ip": 66, "dominance": 0.07028753993610223}
+{"rps": 975, "confirmed DoS": false, "confirmed DDoS": false, "unique_ips": 41, "top_ip": 54, "dominance": 0.055384615384615386}
+{"rps": 472, "confirmed DoS": false, "confirmed DDoS": false, "unique_ips": 43, "top_ip": 24, "dominance": 0.05084745762711865}
+{"rps": 7959, "confirmed DoS": false, "confirmed DDoS": false, "unique_ips": 14, "top_ip": 1100, "dominance": 0.1382083176278427}
+{"rps": 9311, "confirmed DoS": false, "confirmed DDoS": false, "unique_ips": 14, "top_ip": 1533, "dominance": 0.1646439694984427}
+{"rps": 14786, "confirmed DoS": false, "confirmed DDoS": true, "unique_ips": 5, "top_ip": 4578, "dominance": 0.3096172054646287}
+{"rps": 8493, "confirmed DoS": false, "confirmed DDoS": true, "unique_ips": 27, "top_ip": 556, "dominance": 0.06546567761686095}
+{"rps": 9210, "confirmed DoS": false, "confirmed DDoS": true, "unique_ips": 39, "top_ip": 621, "dominance": 0.06742671009771987}
+{"rps": 9752, "confirmed DoS": false, "confirmed DDoS": true, "unique_ips": 22, "top_ip": 1020, "dominance": 0.10459392945036916}
+{"rps": 8739, "confirmed DoS": false, "confirmed DDoS": true, "unique_ips": 44, "top_ip": 444, "dominance": 0.05080672845863371}
+{"rps": 9566, "confirmed DoS": false, "confirmed DDoS": true, "unique_ips": 34, "top_ip": 642, "dominance": 0.06711269077984529}
+{"rps": 8914, "confirmed DoS": false, "confirmed DDoS": true, "unique_ips": 34, "top_ip": 654, "dominance": 0.07336773614538927}
+{"rps": 9192, "confirmed DoS": false, "confirmed DDoS": true, "unique_ips": 29, "top_ip": 777, "dominance": 0.08453002610966058}
+{"rps": 8719, "confirmed DoS": false, "confirmed DDoS": true, "unique_ips": 43, "top_ip": 510, "dominance": 0.05849294643881179}
+{"rps": 10293, "confirmed DoS": false, "confirmed DDoS": true, "unique_ips": 42, "top_ip": 498, "dominance": 0.04838239580297289}
+{"rps": 8252, "confirmed DoS": false, "confirmed DDoS": true, "unique_ips": 20, "top_ip": 981, "dominance": 0.11888027144934561}
+{"rps": 9487, "confirmed DoS": false, "confirmed DDoS": true, "unique_ips": 28, "top_ip": 735, "dominance": 0.07747443870559713}
+{"rps": 9016, "confirmed DoS": false, "confirmed DDoS": true, "unique_ips": 40, "top_ip": 492, "dominance": 0.05456965394853593}
+{"rps": 7921, "confirmed DoS": false, "confirmed DDoS": true, "unique_ips": 19, "top_ip": 996, "dominance": 0.1257416992803939}
+{"rps": 10050, "confirmed DoS": false, "confirmed DDoS": true, "unique_ips": 41, "top_ip": 564, "dominance": 0.056119402985074625}
+{"rps": 9151, "confirmed DoS": false, "confirmed DDoS": true, "unique_ips": 6, "top_ip": 2386, "dominance": 0.26073653152660914}
+{"rps": 9455, "confirmed DoS": false, "confirmed DDoS": true, "unique_ips": 24, "top_ip": 828, "dominance": 0.08757271285034374}
+{"rps": 8937, "confirmed DoS": false, "confirmed DDoS": true, "unique_ips": 43, "top_ip": 480, "dominance": 0.05370929842228936}
+{"rps": 9136, "confirmed DoS": false, "confirmed DDoS": true, "unique_ips": 17, "top_ip": 830, "dominance": 0.09084938704028021}
+{"rps": 7763, "confirmed DoS": false, "confirmed DDoS": true, "unique_ips": 6, "top_ip": 2190, "dominance": 0.2821074326935463}
+{"rps": 9919, "confirmed DoS": false, "confirmed DDoS": true, "unique_ips": 18, "top_ip": 1173, "dominance": 0.11825788890009073}
+{"rps": 7262, "confirmed DoS": false, "confirmed DDoS": true, "unique_ips": 44, "top_ip": 357, "dominance": 0.049160011016248964}
+{"rps": 8125, "confirmed DoS": false, "confirmed DDoS": false, "unique_ips": 19, "top_ip": 780, "dominance": 0.096}
+{"rps": 7366, "confirmed DoS": false, "confirmed DDoS": false, "unique_ips": 24, "top_ip": 618, "dominance": 0.08389899538419766}
+{"rps": 6616, "confirmed DoS": false, "confirmed DDoS": true, "unique_ips": 8, "top_ip": 1174, "dominance": 0.17744860943168078}
+{"rps": 6003, "confirmed DoS": false, "confirmed DDoS": true, "unique_ips": 9, "top_ip": 1030, "dominance": 0.1715808762285524}
+{"rps": 4593, "confirmed DoS": false, "confirmed DDoS": true, "unique_ips": 27, "top_ip": 441, "dominance": 0.09601567602873938}
+{"rps": 4753, "confirmed DoS": false, "confirmed DDoS": true, "unique_ips": 16, "top_ip": 594, "dominance": 0.1249737008205344}
+{"rps": 3841, "confirmed DoS": false, "confirmed DDoS": true, "unique_ips": 18, "top_ip": 362, "dominance": 0.09424629002863838}
+{"rps": 5383, "confirmed DoS": false, "confirmed DDoS": true, "unique_ips": 19, "top_ip": 555, "dominance": 0.10310235927921234}
+{"rps": 4409, "confirmed DoS": false, "confirmed DDoS": true, "unique_ips": 39, "top_ip": 276, "dominance": 0.06259922885007939}
+{"rps": 5116, "confirmed DoS": false, "confirmed DDoS": true, "unique_ips": 7, "top_ip": 1329, "dominance": 0.259773260359656}
+{"rps": 4251, "confirmed DoS": false, "confirmed DDoS": true, "unique_ips": 29, "top_ip": 318, "dominance": 0.0748059280169372}
+{"rps": 4453, "confirmed DoS": false, "confirmed DDoS": true, "unique_ips": 21, "top_ip": 486, "dominance": 0.109139905681563}
+{"rps": 4004, "confirmed DoS": false, "confirmed DDoS": true, "unique_ips": 10, "top_ip": 650, "dominance": 0.16233766233766234}
+{"rps": 4905, "confirmed DoS": false, "confirmed DDoS": true, "unique_ips": 39, "top_ip": 303, "dominance": 0.0617737003058104}
+{"rps": 5273, "confirmed DoS": false, "confirmed DDoS": false, "unique_ips": 5, "top_ip": 2010, "dominance": 0.38118717997344964}
+{"rps": 5655, "confirmed DoS": false, "confirmed DDoS": false, "unique_ips": 9, "top_ip": 1149, "dominance": 0.20318302387267906}
+{"rps": 5059, "confirmed DoS": false, "confirmed DDoS": false, "unique_ips": 37, "top_ip": 306, "dominance": 0.0604862621071358}
+{"rps": 4839, "confirmed DoS": false, "confirmed DDoS": true, "unique_ips": 35, "top_ip": 300, "dominance": 0.06199628022318661}
+{"rps": 5698, "confirmed DoS": false, "confirmed DDoS": true, "unique_ips": 32, "top_ip": 408, "dominance": 0.0716040716040716}
+{"rps": 4363, "confirmed DoS": false, "confirmed DDoS": true, "unique_ips": 32, "top_ip": 384, "dominance": 0.08801283520513409}
+{"rps": 4634, "confirmed DoS": false, "confirmed DDoS": true, "unique_ips": 23, "top_ip": 411, "dominance": 0.08869227449287873}
+{"rps": 4439, "confirmed DoS": false, "confirmed DDoS": true, "unique_ips": 35, "top_ip": 297, "dominance": 0.06690696102725839}
+{"rps": 3828, "confirmed DoS": false, "confirmed DDoS": true, "unique_ips": 43, "top_ip": 237, "dominance": 0.06191222570532915}
+{"rps": 4507, "confirmed DoS": false, "confirmed DDoS": true, "unique_ips": 35, "top_ip": 291, "dominance": 0.06456623030840915}
+{"rps": 3813, "confirmed DoS": false, "confirmed DDoS": true, "unique_ips": 36, "top_ip": 231, "dominance": 0.06058221872541306}
+{"rps": 4303, "confirmed DoS": false, "confirmed DDoS": true, "unique_ips": 23, "top_ip": 432, "dominance": 0.10039507320474088}
+{"rps": 3850, "confirmed DoS": false, "confirmed DDoS": true, "unique_ips": 24, "top_ip": 348, "dominance": 0.0903896103896104}
+{"rps": 3809, "confirmed DoS": false, "confirmed DDoS": true, "unique_ips": 33, "top_ip": 258, "dominance": 0.06773431346810187}
+{"rps": 3462, "confirmed DoS": false, "confirmed DDoS": true, "unique_ips": 39, "top_ip": 182, "dominance": 0.05257076834199884}
+{"rps": 3533, "confirmed DoS": false, "confirmed DDoS": true, "unique_ips": 34, "top_ip": 219, "dominance": 0.061986979903764505}
+{"rps": 5014, "confirmed DoS": false, "confirmed DDoS": false, "unique_ips": 20, "top_ip": 468, "dominance": 0.09333865177502991}
+{"rps": 6310, "confirmed DoS": false, "confirmed DDoS": false, "unique_ips": 19, "top_ip": 720, "dominance": 0.11410459587955626}
+{"rps": 6864, "confirmed DoS": false, "confirmed DDoS": true, "unique_ips": 18, "top_ip": 816, "dominance": 0.11888111888111888}
+{"rps": 6113, "confirmed DoS": false, "confirmed DDoS": true, "unique_ips": 32, "top_ip": 441, "dominance": 0.07214133813185016}
+{"rps": 4429, "confirmed DoS": false, "confirmed DDoS": true, "unique_ips": 33, "top_ip": 348, "dominance": 0.07857304131858207}
+{"rps": 4581, "confirmed DoS": false, "confirmed DDoS": true, "unique_ips": 10, "top_ip": 712, "dominance": 0.1554245797860729}
+{"rps": 4615, "confirmed DoS": false, "confirmed DDoS": true, "unique_ips": 6, "top_ip": 1170, "dominance": 0.2535211267605634}
+{"rps": 4400, "confirmed DoS": false, "confirmed DDoS": true, "unique_ips": 13, "top_ip": 765, "dominance": 0.17386363636363636}
+{"rps": 4868, "confirmed DoS": false, "confirmed DDoS": true, "unique_ips": 34, "top_ip": 306, "dominance": 0.0628594905505341}
+{"rps": 4433, "confirmed DoS": false, "confirmed DDoS": true, "unique_ips": 13, "top_ip": 554, "dominance": 0.12497180239115722}
+{"rps": 4666, "confirmed DoS": false, "confirmed DDoS": true, "unique_ips": 15, "top_ip": 672, "dominance": 0.14402057436776683}
+{"rps": 4707, "confirmed DoS": false, "confirmed DDoS": true, "unique_ips": 26, "top_ip": 405, "dominance": 0.08604206500956023}
+{"rps": 5021, "confirmed DoS": false, "confirmed DDoS": true, "unique_ips": 6, "top_ip": 1186, "dominance": 0.23620792670782711}
+{"rps": 4220, "confirmed DoS": false, "confirmed DDoS": true, "unique_ips": 44, "top_ip": 231, "dominance": 0.054739336492891}
+{"rps": 3218, "confirmed DoS": false, "confirmed DDoS": true, "unique_ips": 7, "top_ip": 500, "dominance": 0.15537600994406464}
+{"rps": 4121, "confirmed DoS": false, "confirmed DDoS": true, "unique_ips": 31, "top_ip": 258, "dominance": 0.06260616355253579}
+{"rps": 4293, "confirmed DoS": false, "confirmed DDoS": true, "unique_ips": 32, "top_ip": 318, "dominance": 0.07407407407407407}
+{"rps": 4350, "confirmed DoS": false, "confirmed DDoS": true, "unique_ips": 26, "top_ip": 363, "dominance": 0.08344827586206896}
+{"rps": 4019, "confirmed DoS": false, "confirmed DDoS": true, "unique_ips": 5, "top_ip": 1304, "dominance": 0.3244588206021398}
+{"rps": 3407, "confirmed DoS": false, "confirmed DDoS": true, "unique_ips": 16, "top_ip": 402, "dominance": 0.1179923686527737}
+{"rps": 4226, "confirmed DoS": false, "confirmed DDoS": true, "unique_ips": 37, "top_ip": 273, "dominance": 0.06460009465215334}
+{"rps": 4534, "confirmed DoS": false, "confirmed DDoS": true, "unique_ips": 18, "top_ip": 585, "dominance": 0.1290251433612704}
+{"rps": 3958, "confirmed DoS": false, "confirmed DDoS": true, "unique_ips": 45, "top_ip": 222, "dominance": 0.056088933804951994}
+{"rps": 4934, "confirmed DoS": false, "confirmed DDoS": true, "unique_ips": 15, "top_ip": 738, "dominance": 0.14957438184029184}
+{"rps": 4599, "confirmed DoS": false, "confirmed DDoS": true, "unique_ips": 24, "top_ip": 513, "dominance": 0.11154598825831702}
+{"rps": 5213, "confirmed DoS": false, "confirmed DDoS": true, "unique_ips": 26, "top_ip": 423, "dominance": 0.08114329560713601}
+{"rps": 4243, "confirmed DoS": false, "confirmed DDoS": true, "unique_ips": 21, "top_ip": 414, "dominance": 0.09757247230732972}
+{"rps": 3181, "confirmed DoS": false, "confirmed DDoS": true, "unique_ips": 12, "top_ip": 450, "dominance": 0.141464948129519}
+{"rps": 3532, "confirmed DoS": false, "confirmed DDoS": false, "unique_ips": 17, "top_ip": 416, "dominance": 0.11778029445073612}
+{"rps": 4631, "confirmed DoS": false, "confirmed DDoS": false, "unique_ips": 40, "top_ip": 300, "dominance": 0.06478082487583675}
+{"rps": 4311, "confirmed DoS": false, "confirmed DDoS": true, "unique_ips": 22, "top_ip": 507, "dominance": 0.11760612386917188}
+{"rps": 4661, "confirmed DoS": false, "confirmed DDoS": true, "unique_ips": 30, "top_ip": 321, "dominance": 0.06886934134305943}
+{"rps": 3183, "confirmed DoS": false, "confirmed DDoS": true, "unique_ips": 30, "top_ip": 249, "dominance": 0.07822808671065033}
+{"rps": 3279, "confirmed DoS": false, "confirmed DDoS": true, "unique_ips": 5, "top_ip": 960, "dominance": 0.292772186642269}
+{"rps": 3629, "confirmed DoS": false, "confirmed DDoS": true, "unique_ips": 23, "top_ip": 399, "dominance": 0.1099476439790576}
+{"rps": 3588, "confirmed DoS": false, "confirmed DDoS": true, "unique_ips": 27, "top_ip": 294, "dominance": 0.08193979933110368}
+{"rps": 3558, "confirmed DoS": false, "confirmed DDoS": true, "unique_ips": 34, "top_ip": 243, "dominance": 0.06829679595278246}
+{"rps": 3456, "confirmed DoS": false, "confirmed DDoS": true, "unique_ips": 37, "top_ip": 216, "dominance": 0.0625}
+{"rps": 3205, "confirmed DoS": false, "confirmed DDoS": true, "unique_ips": 9, "top_ip": 560, "dominance": 0.1747269890795632}
+{"rps": 3267, "confirmed DoS": false, "confirmed DDoS": true, "unique_ips": 13, "top_ip": 525, "dominance": 0.16069788797061524}
+{"rps": 3148, "confirmed DoS": false, "confirmed DDoS": true, "unique_ips": 34, "top_ip": 261, "dominance": 0.08290978398983481}
+{"rps": 3276, "confirmed DoS": false, "confirmed DDoS": true, "unique_ips": 15, "top_ip": 504, "dominance": 0.15384615384615385}
+{"rps": 3225, "confirmed DoS": false, "confirmed DDoS": true, "unique_ips": 27, "top_ip": 306, "dominance": 0.09488372093023256}
+{"rps": 2720, "confirmed DoS": false, "confirmed DDoS": true, "unique_ips": 33, "top_ip": 207, "dominance": 0.07610294117647058}
+{"rps": 3674, "confirmed DoS": false, "confirmed DDoS": true, "unique_ips": 21, "top_ip": 372, "dominance": 0.10125204137180185}
+{"rps": 3669, "confirmed DoS": false, "confirmed DDoS": true, "unique_ips": 17, "top_ip": 471, "dominance": 0.12837285363859363}
+{"rps": 3065, "confirmed DoS": false, "confirmed DDoS": true, "unique_ips": 45, "top_ip": 168, "dominance": 0.054812398042414355}
+{"rps": 3068, "confirmed DoS": false, "confirmed DDoS": true, "unique_ips": 24, "top_ip": 300, "dominance": 0.09778357235984354}
+{"rps": 3904, "confirmed DoS": false, "confirmed DDoS": false, "unique_ips": 8, "top_ip": 838, "dominance": 0.2146516393442623}
+{"rps": 3429, "confirmed DoS": false, "confirmed DDoS": false, "unique_ips": 6, "top_ip": 608, "dominance": 0.1773111694371537}
+{"rps": 4998, "confirmed DoS": false, "confirmed DDoS": true, "unique_ips": 11, "top_ip": 984, "dominance": 0.19687875150060025}
+{"rps": 4554, "confirmed DoS": false, "confirmed DDoS": true, "unique_ips": 35, "top_ip": 330, "dominance": 0.07246376811594203}
+{"rps": 3687, "confirmed DoS": false, "confirmed DDoS": true, "unique_ips": 28, "top_ip": 300, "dominance": 0.08136696501220504}
+{"rps": 3902, "confirmed DoS": false, "confirmed DDoS": true, "unique_ips": 15, "top_ip": 558, "dominance": 0.14300358790363915}
+{"rps": 3438, "confirmed DoS": false, "confirmed DDoS": true, "unique_ips": 34, "top_ip": 276, "dominance": 0.08027923211169284}
+{"rps": 3685, "confirmed DoS": false, "confirmed DDoS": true, "unique_ips": 31, "top_ip": 273, "dominance": 0.07408412483039349}
+{"rps": 3357, "confirmed DoS": false, "confirmed DDoS": true, "unique_ips": 37, "top_ip": 222, "dominance": 0.06613047363717604}
+{"rps": 3530, "confirmed DoS": false, "confirmed DDoS": true, "unique_ips": 43, "top_ip": 219, "dominance": 0.062039660056657224}
+{"rps": 3834, "confirmed DoS": false, "confirmed DDoS": true, "unique_ips": 35, "top_ip": 222, "dominance": 0.057902973395931145}
+{"rps": 3711, "confirmed DoS": false, "confirmed DDoS": true, "unique_ips": 25, "top_ip": 333, "dominance": 0.08973322554567502}
+{"rps": 3136, "confirmed DoS": false, "confirmed DDoS": true, "unique_ips": 22, "top_ip": 375, "dominance": 0.11957908163265306}
+{"rps": 3602, "confirmed DoS": false, "confirmed DDoS": true, "unique_ips": 29, "top_ip": 264, "dominance": 0.07329261521377013}
+{"rps": 3767, "confirmed DoS": false, "confirmed DDoS": true, "unique_ips": 14, "top_ip": 624, "dominance": 0.16564905760552165}
+{"rps": 3708, "confirmed DoS": false, "confirmed DDoS": true, "unique_ips": 20, "top_ip": 399, "dominance": 0.1076051779935275}
+{"rps": 4093, "confirmed DoS": false, "confirmed DDoS": true, "unique_ips": 24, "top_ip": 354, "dominance": 0.0864891277791351}
+{"rps": 3020, "confirmed DoS": false, "confirmed DDoS": true, "unique_ips": 19, "top_ip": 378, "dominance": 0.1251655629139073}
+{"rps": 3490, "confirmed DoS": false, "confirmed DDoS": true, "unique_ips": 30, "top_ip": 300, "dominance": 0.08595988538681948}
+{"rps": 3862, "confirmed DoS": false, "confirmed DDoS": true, "unique_ips": 25, "top_ip": 366, "dominance": 0.09476954945624029}
+{"rps": 5568, "confirmed_DoS": false, "confirmed_DDoS": false, "unique_ips": 12, "top_ip": 855, "dominance": 0.15355603448275862}
+{"rps": 5069, "confirmed_DoS": false, "confirmed_DDoS": false, "unique_ips": 37, "top_ip": 294, "dominance": 0.05799960544486092}
+{"rps": 5049, "confirmed_DoS": false, "confirmed_DDoS": true, "unique_ips": 13, "top_ip": 837, "dominance": 0.1657754010695187}
+{"rps": 4916, "confirmed_DoS": false, "confirmed_DDoS": true, "unique_ips": 36, "top_ip": 345, "dominance": 0.07017900732302686}
+{"rps": 4472, "confirmed_DoS": false, "confirmed_DDoS": true, "unique_ips": 22, "top_ip": 358, "dominance": 0.08005366726296959}
+{"rps": 4989, "confirmed_DoS": false, "confirmed_DDoS": true, "unique_ips": 43, "top_ip": 285, "dominance": 0.057125676488274206}
+{"rps": 5709, "confirmed_DoS": false, "confirmed_DDoS": true, "unique_ips": 9, "top_ip": 1140, "dominance": 0.19968470835522859}
+{"rps": 4949, "confirmed_DoS": false, "confirmed_DDoS": true, "unique_ips": 37, "top_ip": 342, "dominance": 0.06910486967064053}
+{"rps": 5853, "confirmed_DoS": false, "confirmed_DDoS": true, "unique_ips": 15, "top_ip": 750, "dominance": 0.12813941568426448}
+{"rps": 4595, "confirmed_DoS": false, "confirmed_DDoS": true, "unique_ips": 33, "top_ip": 330, "dominance": 0.07181719260065289}
+{"rps": 5017, "confirmed_DoS": false, "confirmed_DDoS": true, "unique_ips": 36, "top_ip": 342, "dominance": 0.06816822802471596}
+{"rps": 5560, "confirmed_DoS": false, "confirmed_DDoS": true, "unique_ips": 17, "top_ip": 612, "dominance": 0.11007194244604317}
+{"rps": 5511, "confirmed_DoS": false, "confirmed_DDoS": true, "unique_ips": 39, "top_ip": 294, "dominance": 0.053347849755035384}
+{"rps": 5251, "confirmed_DoS": false, "confirmed_DDoS": true, "unique_ips": 43, "top_ip": 255, "dominance": 0.0485621786326414}
+{"rps": 4774, "confirmed_DoS": false, "confirmed_DDoS": true, "unique_ips": 38, "top_ip": 291, "dominance": 0.060955173858399665}
+{"rps": 4767, "confirmed_DoS": false, "confirmed_DDoS": false, "unique_ips": 14, "top_ip": 741, "dominance": 0.1554436752674638}
+{"rps": 4798, "confirmed_DoS": false, "confirmed_DDoS": false, "unique_ips": 11, "top_ip": 1002, "dominance": 0.20883701542309296}
+{"rps": 5031, "confirmed_DoS": false, "confirmed_DDoS": true, "unique_ips": 19, "top_ip": 597, "dominance": 0.11866428145497913}
+{"rps": 5573, "confirmed_DoS": false, "confirmed_DDoS": true, "unique_ips": 29, "top_ip": 426, "dominance": 0.0764399784676117}
+{"rps": 4835, "confirmed_DoS": false, "confirmed_DDoS": true, "unique_ips": 34, "top_ip": 336, "dominance": 0.06949327817993796}
+{"rps": 4686, "confirmed_DoS": false, "confirmed_DDoS": false, "unique_ips": 16, "top_ip": 708, "dominance": 0.15108834827144688}
+{"rps": 5275, "confirmed_DoS": false, "confirmed_DDoS": false, "unique_ips": 44, "top_ip": 321, "dominance": 0.06085308056872038}
+{"rps": 4950, "confirmed_DoS": false, "confirmed_DDoS": true, "unique_ips": 10, "top_ip": 788, "dominance": 0.1591919191919192}
+{"rps": 4827, "confirmed_DoS": false, "confirmed_DDoS": true, "unique_ips": 39, "top_ip": 288, "dominance": 0.05966438781852082}
+{"rps": 3691, "confirmed_DoS": false, "confirmed_DDoS": true, "unique_ips": 29, "top_ip": 294, "dominance": 0.07965321051205636}
+{"rps": 222, "confirmed_DoS": false, "confirmed_DDoS": false, "unique_ips": 43, "top_ip": 18, "dominance": 0.08108108108108109}
+{"rps": 5126, "confirmed_DoS": false, "confirmed_DDoS": false, "unique_ips": 13, "top_ip": 644, "dominance": 0.12563402262973078}
+{"rps": 5332, "confirmed_DoS": false, "confirmed_DDoS": false, "unique_ips": 33, "top_ip": 378, "dominance": 0.0708927231807952}
+{"rps": 4314, "confirmed_DoS": false, "confirmed_DDoS": true, "unique_ips": 6, "top_ip": 1212, "dominance": 0.2809457579972184}
+{"rps": 4921, "confirmed_DoS": false, "confirmed_DDoS": true, "unique_ips": 8, "top_ip": 1329, "dominance": 0.2700670595407437}
+{"rps": 3381, "confirmed_DoS": false, "confirmed_DDoS": true, "unique_ips": 33, "top_ip": 303, "dominance": 0.08961845607808341}
+{"rps": 4020, "confirmed_DoS": false, "confirmed_DDoS": true, "unique_ips": 45, "top_ip": 210, "dominance": 0.05223880597014925}
+{"rps": 3915, "confirmed_DoS": false, "confirmed_DDoS": true, "unique_ips": 42, "top_ip": 207, "dominance": 0.052873563218390804}
+{"rps": 4035, "confirmed_DoS": false, "confirmed_DDoS": true, "unique_ips": 41, "top_ip": 228, "dominance": 0.05650557620817844}
+{"rps": 3146, "confirmed_DoS": false, "confirmed_DDoS": true, "unique_ips": 19, "top_ip": 306, "dominance": 0.09726636999364272}
+{"rps": 3850, "confirmed_DoS": false, "confirmed_DDoS": true, "unique_ips": 45, "top_ip": 225, "dominance": 0.05844155844155844}
+{"rps": 4036, "confirmed_DoS": false, "confirmed_DDoS": true, "unique_ips": 38, "top_ip": 216, "dominance": 0.053518334985133795}
+{"rps": 2991, "confirmed_DoS": false, "confirmed_DDoS": true, "unique_ips": 7, "top_ip": 716, "dominance": 0.23938482113005682}
+{"rps": 3283, "confirmed_DoS": false, "confirmed_DDoS": true, "unique_ips": 16, "top_ip": 372, "dominance": 0.11331099604020713}
+{"rps": 4702, "confirmed_DoS": false, "confirmed_DDoS": true, "unique_ips": 5, "top_ip": 1503, "dominance": 0.31965121225010634}
+{"rps": 3412, "confirmed_DoS": false, "confirmed_DDoS": true, "unique_ips": 29, "top_ip": 261, "dominance": 0.0764947245017585}

@@ -3,6 +3,14 @@ import random
 import threading
 import json
 
+def sleep_with_stop(stop_event, seconds: float, step: float = 0.05):
+    """Sleep in small chunks so the mode can stop immediately."""
+    end = time.time() + seconds
+    while time.time() < end:
+        if stop_event is not None and stop_event.is_set():
+            return
+        time.sleep(min(step, end - time.time()))
+
 class attackDoSMode:
     def __init__(self):
         self.request_count = 0
@@ -25,24 +33,36 @@ class attackDoSMode:
     def simulate_dos_attack(self):
         in_burst = False
         while self.running:
+            stop_event = getattr(self, "stop_event", None)
+            if stop_event is not None and stop_event.is_set():
+                self.running = False
+                break
             if self.blocked == False:
                 if in_burst:
-                    time.sleep(random.uniform(*self.burst_sleep_range))
+                    sleep_with_stop(getattr(self, "stop_event", None),
+                    random.uniform(*self.burst_sleep_range),
+                        step=0.01)
                     if random.random() < self.exit_burst_chance:
                         in_burst = False
                 else:
-                    time.sleep(random.uniform(*self.normal_sleep_range))
+                    sleep_with_stop(getattr(self, "stop_event", None),
+                    random.uniform(*self.normal_sleep_range),
+                    step=0.01)
                     if random.random() < self.burst_chance:
                         in_burst = True
                 with self.lock:
                     self.request_count += 1
                     self.ip_request_counts[self.attacker_id] = self.ip_request_counts.get(self.attacker_id, 0) + 1
             else:
-                time.sleep(0.01)
+                sleep_with_stop(getattr(self, "stop_event", None), 0.01, step=0.01)
 
     def simulate_dosattack_success(self):
         while self.running:
-            time.sleep(1)
+            stop_event = getattr(self, "stop_event", None)
+            if stop_event is not None and stop_event.is_set():
+                self.running = False
+                break
+            sleep_with_stop(getattr(self, "stop_event", None), 1)
             with self.lock:
                 rps = self.request_count 
                 ip_snapshot = dict(self.ip_request_counts)
@@ -78,6 +98,7 @@ class attackDoSMode:
                 f.write("\n")
             
     def start(self, num_threads=10, duration=15):
+        self.running = True
         threads = []
         for _ in range(num_threads):
             t = threading.Thread(target=self.simulate_dos_attack, daemon=True)
@@ -87,7 +108,8 @@ class attackDoSMode:
         monitor = threading.Thread(target=self.simulate_dosattack_success, daemon=True)
         monitor.start()
 
-        time.sleep(duration)
+        stop_event = getattr(self, "stop_event", None)
+        sleep_with_stop(stop_event, duration)
         self.running = False
 
         for t in threads:
@@ -126,18 +148,26 @@ class attackDDoSMode:
     def simulate_ddos_attack(self):
         in_burst = False
         while self.running:
+            stop_event = getattr(self, "stop_event", None)
+            if stop_event is not None and stop_event.is_set():
+                self.running = False
+                break
             if in_burst:
-                time.sleep(random.uniform(0.001, 0.004))
+                sleep_with_stop(getattr(self, "stop_event", None),
+                random.uniform(0.001, 0.004),
+                step=0.01)
                 if random.random() < 0.03:
                     in_burst = False
             else:
-                time.sleep(random.uniform(0.003, 0.01))
+                sleep_with_stop(getattr(self, "stop_event", None),
+                random.uniform(0.003, 0.01),
+                step=0.01)
                 if random.random() < 0.05:
                     in_burst = True
             with self.lock:
                 attackers = list(self.active_attackers)
             if not attackers:
-                time.sleep(0.01)
+                sleep_with_stop(getattr(self, "stop_event", None), 0.01, step=0.01)
                 continue
             attacker = random.choice(attackers)
             ip = attacker
@@ -157,7 +187,11 @@ class attackDDoSMode:
     
     def display_attack_success(self):
         while self.running:
-            time.sleep(1)
+            stop_event = getattr(self, "stop_event", None)
+            if stop_event is not None and stop_event.is_set():
+                self.running = False
+                break
+            sleep_with_stop(getattr(self, "stop_event", None), 1)
             with self.lock:
                 rps = self.request_count
                 ip_snapshot = dict(self.ip_request_counts)
@@ -194,6 +228,7 @@ class attackDDoSMode:
                 json.dump(self.last_state, f)
                 f.write("\n")
     def start(self, num_threads=10, duration=15):
+        self.running = True
         threads = []
         for _ in range(num_threads):
             t = threading.Thread(target=self.simulate_ddos_attack, daemon=True)
@@ -203,7 +238,8 @@ class attackDDoSMode:
         monitor = threading.Thread(target=self.display_attack_success, daemon=True)
         monitor.start()
 
-        time.sleep(duration)
+        stop_event = getattr(self, "stop_event", None)
+        sleep_with_stop(stop_event, duration)
         self.running = False
 
         for t in threads:
@@ -231,8 +267,13 @@ class attackAdaptiveMode:
         self.required_streak = 2
 
     def start(self):
+        self.running = True
         while self.running:
-            time.sleep(1)
+            stop_event = getattr(self, "stop_event", None)
+            if stop_event is not None and stop_event.is_set():
+                self.running = False
+                break
+            sleep_with_stop(getattr(self, "stop_event", None), 1)
             self.evaluate()
 
     def evaluate(self):

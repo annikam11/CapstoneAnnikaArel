@@ -1,0 +1,10 @@
+{
+  "username": "Jack",
+  "role": "Learner",
+  "labs_completed": [],
+  "quizzes_completed": [],
+  "points": 0,
+  "default_duration": 15,
+  "default_threads": 10,
+  "quiz_points": 10
+}

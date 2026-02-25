@@ -1,0 +1,16 @@
+{
+  "username": "Annie",
+  "role": "Learner",
+  "labs_completed": [
+    "A1",
+    "A2"
+  ],
+  "quizzes_completed": [
+    "A1:quiz",
+    "A2:quiz"
+  ],
+  "points": 20,
+  "default_duration": 15,
+  "default_threads": 10,
+  "quiz_points": 10
+}

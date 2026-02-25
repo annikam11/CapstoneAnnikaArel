@@ -1,0 +1,12 @@
+{
+  "username": "Guest",
+  "role": "Learner",
+  "labs_completed": [],
+  "quizzes_completed": [
+    "A1:quiz"
+  ],
+  "points": 10,
+  "default_duration": 15,
+  "default_threads": 10,
+  "quiz_points": 10
+}

@@ -1,37 +1,19 @@
-from __future__ import annotations
-
-import sys
-import time
-import webbrowser
-import subprocess
 from pathlib import Path
+import sys
+
+# If you keep your Tkinter UI in modules/ui.py and it defines ArelGuardApp
+from modules.ui import ArelGuardApp
 
 
 def run():
-    root = Path(__file__).resolve().parent
-    ui_file = root / "modules" / "ui.py"
-    port = "8501"
-    url = f"http://localhost:{port}"
-
-    # Start Streamlit using the SAME venv python
-    proc = subprocess.Popen(
-        [
-            sys.executable, "-m", "streamlit", "run", str(ui_file),
-            "--server.port", port,
-            "--server.headless", "true",
-        ],
-        cwd=str(root),  # critical so `modules` is importable
-    )
-
-    # Give the server a moment to start, then open browser
-    time.sleep(1.0)
-    webbrowser.open(url)
-
-    # Keep main.py alive while Streamlit runs
-    proc.wait()
+    app = ArelGuardApp()
+    app.mainloop()
 
 
 if __name__ == "__main__":
+    # Ensure project root is on sys.path (helps when running from elsewhere)
+    root = Path(__file__).resolve().parent
+    if str(root) not in sys.path:
+        sys.path.insert(0, str(root))
+
     run()
-
-
