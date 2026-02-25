@@ -415,12 +415,53 @@ class ArelGuardApp(tk.Tk):
         self._orig_stdout = sys.stdout
         sys.stdout = QueueWriter(self._log_q)
 
+        # --- Dynamic wrap registry (NEW) ---
+        self._wrap_registry: list[tuple[tk.Label, int, float]] = []
+        self._sidebar_target_w = 240
+
         self._build_layout()
         self._setup_ttk_style()
+
+        # Global resize handler (NEW)
+        self.bind("<Configure>", self._on_window_resize)
 
         # Prompt user on startup
         self.after(50, self._prompt_user_dialog)
         self.show_overview()
+
+    # ---------- Dynamic UI sizing (NEW) ----------
+    def _register_wrap(self, label: tk.Label, pad: int = 28, fraction: float = 0.92):
+        """Register a label whose wraplength should follow window width."""
+        self._wrap_registry.append((label, pad, fraction))
+        self.after(1, self._on_window_resize)
+
+    def _clear_wrap_registry(self):
+        self._wrap_registry.clear()
+
+    def _on_window_resize(self, event=None):
+        # dynamic sidebar width (clamped)
+        total_w = max(800, self.winfo_width())
+        target = int(total_w * 0.20)
+        target = max(210, min(300, target))
+        if self._sidebar_target_w != target:
+            self._sidebar_target_w = target
+            try:
+                self.sidebar.configure(width=target)
+            except Exception:
+                pass
+
+        # update wraplengths
+        try:
+            content_w = max(300, self.content.winfo_width())
+        except Exception:
+            return
+
+        for lbl, pad, frac in list(self._wrap_registry):
+            try:
+                wl = int((content_w - pad * 2) * frac)
+                lbl.configure(wraplength=max(260, wl))
+            except Exception:
+                pass
 
     # ---------- Profiles ----------
     def _load_user(self, username: str) -> UserProfile:
@@ -523,14 +564,21 @@ class ArelGuardApp(tk.Tk):
         super().destroy()
 
     # =========================
-    # Layout
+    # Layout  (UPDATED: ROOT uses grid so everything resizes)
     # =========================
     def _build_layout(self):
-        self.sidebar = tk.Frame(self, bg=COL_SIDEBAR, width=220)
-        self.sidebar.pack(side="left", fill="y")
+        self.grid_rowconfigure(0, weight=1)
+        self.grid_columnconfigure(0, weight=0)  # sidebar
+        self.grid_columnconfigure(1, weight=1)  # content
+
+        self.sidebar = tk.Frame(self, bg=COL_SIDEBAR)
+        self.sidebar.grid(row=0, column=0, sticky="ns")
 
         self.content = tk.Frame(self, bg=COL_BG)
-        self.content.pack(side="right", fill="both", expand=True)
+        self.content.grid(row=0, column=1, sticky="nsew")
+
+        self.sidebar.configure(width=self._sidebar_target_w)
+        self.sidebar.grid_propagate(False)
 
         self._build_sidebar()
 
@@ -640,6 +688,7 @@ class ArelGuardApp(tk.Tk):
     # UI helpers
     # =========================
     def clear_content(self):
+        self._clear_wrap_registry()
         for w in self.content.winfo_children():
             w.destroy()
 
@@ -647,15 +696,9 @@ class ArelGuardApp(tk.Tk):
         self.active_page = page
         self._build_sidebar()
 
+    # UPDATED: keep your function name, but make it truly dynamic (no unbinds)
     def _bind_simple_wrap(self, label: tk.Label, pad: int = 28, fraction: float = 0.90):
-        def on_resize(event=None):
-            total = self.content.winfo_width()
-            if total > 300:
-                label.configure(wraplength=max(300, int((total - pad * 2) * fraction)))
-
-        self.content.unbind("<Configure>")
-        self.content.bind("<Configure>", on_resize)
-        self.after(50, on_resize)
+        self._register_wrap(label, pad=pad, fraction=fraction)
 
     def _page_header_centered(self, title: str, subtitle: str | None = None):
         header = tk.Frame(self.content, bg=COL_BG)
@@ -806,20 +849,24 @@ class ArelGuardApp(tk.Tk):
         prog_lbl = tk.Label(header, text="", fg=COL_MUTED, bg=COL_PANEL2, font=("Segoe UI", 10, "bold"))
         prog_lbl.pack(side="right")
 
-        lab_title_lbl = tk.Label(panel, text="", fg=COL_CYAN, bg=COL_PANEL2, font=("Segoe UI", 11, "bold"), wraplength=520, justify="left")
+        lab_title_lbl = tk.Label(panel, text="", fg=COL_CYAN, bg=COL_PANEL2, font=("Segoe UI", 11, "bold"), wraplength=1, justify="left")
         lab_title_lbl.pack(anchor="w", padx=12, pady=(6, 2))
+        self._bind_simple_wrap(lab_title_lbl, pad=46, fraction=0.92)
 
-        lab_summary_lbl = tk.Label(panel, text="", fg=COL_MUTED, bg=COL_PANEL2, font=("Segoe UI", 10), wraplength=520, justify="left")
+        lab_summary_lbl = tk.Label(panel, text="", fg=COL_MUTED, bg=COL_PANEL2, font=("Segoe UI", 10), wraplength=1, justify="left")
         lab_summary_lbl.pack(anchor="w", padx=12, pady=(0, 6))
+        self._bind_simple_wrap(lab_summary_lbl, pad=46, fraction=0.92)
 
         lab_done_badge = tk.Label(panel, text="", fg=COL_AMBER, bg=COL_PANEL2, font=("Segoe UI", 10, "bold"))
         lab_done_badge.pack(anchor="w", padx=12, pady=(0, 10))
 
-        step_title_lbl = tk.Label(panel, text="", fg=COL_TEXT, bg=COL_PANEL2, font=("Segoe UI", 11, "bold"), wraplength=520, justify="left")
+        step_title_lbl = tk.Label(panel, text="", fg=COL_TEXT, bg=COL_PANEL2, font=("Segoe UI", 11, "bold"), wraplength=1, justify="left")
         step_title_lbl.pack(anchor="w", padx=12)
+        self._bind_simple_wrap(step_title_lbl, pad=46, fraction=0.92)
 
-        step_instr_lbl = tk.Label(panel, text="", fg=COL_TEXT, bg=COL_PANEL2, font=("Segoe UI", 10), wraplength=520, justify="left")
+        step_instr_lbl = tk.Label(panel, text="", fg=COL_TEXT, bg=COL_PANEL2, font=("Segoe UI", 10), wraplength=1, justify="left")
         step_instr_lbl.pack(anchor="w", padx=12, pady=(2, 0))
+        self._bind_simple_wrap(step_instr_lbl, pad=46, fraction=0.92)
 
         status_lbl = tk.Label(panel, text="", fg=COL_AMBER, bg=COL_PANEL2, font=("Segoe UI", 10, "bold"))
         status_lbl.pack(anchor="w", padx=12, pady=(8, 8))
@@ -1170,8 +1217,10 @@ class ArelGuardApp(tk.Tk):
             c = tk.Frame(parent, bg=panel, highlightthickness=1, highlightbackground=border)
             c.pack(fill="x", pady=(0, 14))
             tk.Label(c, text=title, fg=COL_TEXT, bg=panel, font=("Segoe UI", 14, "bold")).pack(anchor="w", padx=14, pady=(14, 6))
-            lbl = tk.Label(c, text=text, fg=COL_MUTED, bg=panel, font=("Segoe UI", 10), wraplength=520, justify="left")
+            lbl = tk.Label(c, text=text, fg=COL_MUTED, bg=panel, font=("Segoe UI", 10), wraplength=1, justify="left")
             lbl.pack(anchor="w", padx=14, pady=(0, 12))
+            self._bind_simple_wrap(lbl, pad=28, fraction=0.95)
+
             btns = tk.Frame(c, bg=panel)
             btns.pack(anchor="w", padx=14, pady=(0, 14))
             tk.Button(
@@ -1221,16 +1270,20 @@ class ArelGuardApp(tk.Tk):
 
         tk.Label(info, text="Labs completed:", fg=COL_MUTED, bg=COL_PANEL, font=("Segoe UI", 10)).pack(anchor="w", padx=18)
         labs_done = ", ".join(self.user.labs_completed) if self.user.labs_completed else "None yet"
-        tk.Label(info, text=labs_done, fg=COL_TEXT, bg=COL_PANEL, font=("Segoe UI", 10), wraplength=520, justify="left").pack(anchor="w", padx=18, pady=(4, 12))
+        labs_lbl = tk.Label(info, text=labs_done, fg=COL_TEXT, bg=COL_PANEL, font=("Segoe UI", 10), wraplength=1, justify="left")
+        labs_lbl.pack(anchor="w", padx=18, pady=(4, 12))
+        self._bind_simple_wrap(labs_lbl, pad=28, fraction=0.92)
 
         tk.Label(info, text="How to earn points:", fg=COL_MUTED, bg=COL_PANEL, font=("Segoe UI", 10)).pack(anchor="w", padx=18)
-        tk.Label(
+        earn_lbl = tk.Label(
             info,
             text="• Complete guided labs and answer the quick quiz correctly.",
             fg=COL_TEXT, bg=COL_PANEL,
             font=("Segoe UI", 10),
-            wraplength=520, justify="left"
-        ).pack(anchor="w", padx=18, pady=(4, 0))
+            wraplength=1, justify="left"
+        )
+        earn_lbl.pack(anchor="w", padx=18, pady=(4, 0))
+        self._bind_simple_wrap(earn_lbl, pad=28, fraction=0.92)
 
         self._bind_simple_wrap(a_lbl, pad=28, fraction=0.95)
         self._bind_simple_wrap(d_lbl, pad=28, fraction=0.95)
@@ -1246,8 +1299,8 @@ class ArelGuardApp(tk.Tk):
 
         outer = tk.Frame(self.content, bg=COL_BG)
         outer.pack(fill="both", expand=True, padx=28, pady=(0, 24))
-        outer.grid_columnconfigure(0, weight=1)
-        outer.grid_columnconfigure(1, weight=1)
+        outer.grid_columnconfigure(0, weight=2)  # UPDATED: nicer proportional split
+        outer.grid_columnconfigure(1, weight=3)  # UPDATED
         outer.grid_rowconfigure(0, weight=1)
 
         # LEFT: Controls
@@ -1403,8 +1456,9 @@ class ArelGuardApp(tk.Tk):
         lbl_headline = tk.Label(plain_box, text="Waiting…", fg=COL_TEXT, bg=COL_PANEL2, font=("Segoe UI", 12, "bold"))
         lbl_headline.pack(anchor="w", padx=12, pady=(10, 4))
 
-        lbl_explain = tk.Label(plain_box, text="", fg=COL_MUTED, bg=COL_PANEL2, font=("Segoe UI", 10), wraplength=520, justify="left")
+        lbl_explain = tk.Label(plain_box, text="", fg=COL_MUTED, bg=COL_PANEL2, font=("Segoe UI", 10), wraplength=1, justify="left")
         lbl_explain.pack(anchor="w", padx=12, pady=(0, 10))
+        self._bind_simple_wrap(lbl_explain, pad=46, fraction=0.92)
 
         # Traffic level row
         traffic_row = tk.Frame(metrics, bg=COL_PANEL)
@@ -1519,7 +1573,7 @@ class ArelGuardApp(tk.Tk):
             justify="left",
         )
         lbl.pack(anchor="w", padx=28, pady=(10, 10))
-        self._bind_simple_wrap(lbl, pad=28)
+        self._bind_simple_wrap(lbl, pad=28, fraction=0.92)
 
     # =========================
     # Settings page
@@ -1602,7 +1656,7 @@ class ArelGuardApp(tk.Tk):
             relief="flat", font=("Segoe UI", 11, "bold"),
             padx=14, pady=10, cursor="hand2",
         ).pack(side="left", padx=(10, 0))
-        # =========================
+
     # =========================
     # Logout -> back to login prompt
     # =========================
