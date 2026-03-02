@@ -1,17 +1,13 @@
 {
-  "username": "Guest",
+  "username": "Lex",
   "role": "Learner",
   "labs_completed": [
-    "A1",
-    "A2",
-    "A3"
+    "A1"
   ],
   "quizzes_completed": [
-    "A1:quiz",
-    "A2:quiz",
-    "A3:quiz"
+    "A1:quiz"
   ],
-  "points": 30,
+  "points": 10,
   "default_duration": 15,
   "default_threads": 10,
   "quiz_points": 10
