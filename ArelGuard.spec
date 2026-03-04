@@ -2,10 +2,10 @@
 
 
 a = Analysis(
-    ['modules\\ui.py'],
+    ['main.py'],
     pathex=[],
     binaries=[],
-    datas=[('assets/images/ArelGuardLogo.png', 'assets/images')],
+    datas=[('assets', 'assets')],
     hiddenimports=[],
     hookspath=[],
     hooksconfig={},
@@ -35,4 +35,5 @@ exe = EXE(
     target_arch=None,
     codesign_identity=None,
     entitlements_file=None,
+    icon=['assets\\appIcon\\ArelGuardLogo.ico'],
 )

@@ -532,6 +532,10 @@ class ArelGuardApp(tk.Tk):
         self._stop_after_id = None
         self._run_end_ts: Optional[float] = None
 
+        # Log polling control (prevents crash when switching pages)
+        self._log_after_id = None
+        self._log_poll_token = 0
+
         # Learned limits (fallback)
         self._learned_limit: dict[tuple[str, str], int] = {}
         self._observed_peak: dict[tuple[str, str], int] = {}
@@ -894,6 +898,15 @@ class ArelGuardApp(tk.Tk):
     # UI helpers
     # =========================
     def clear_content(self):
+    # stop log polling BEFORE destroying widgets
+        self._log_poll_token += 1
+        if self._log_after_id is not None:
+            try:
+                self.after_cancel(self._log_after_id)
+            except Exception:
+                pass
+        self._log_after_id = None
+
         self._clear_wrap_registry()
         for w in self.content.winfo_children():
             w.destroy()
@@ -1159,7 +1172,22 @@ class ArelGuardApp(tk.Tk):
         except Exception:
             pass
 
-    def _poll_log_queue(self, text_widget: tk.Text):
+    def _poll_log_queue(self, text_widget: tk.Text, token: int):
+
+        # If page changed, stop polling
+        if token != self._log_poll_token:
+            self._log_after_id = None
+            return
+
+        # If widget no longer exists, stop polling
+        try:
+            if text_widget is None or not text_widget.winfo_exists():
+                self._log_after_id = None
+                return
+        except Exception:
+            self._log_after_id = None
+            return
+
         def tag_for_line(line: str) -> str:
             s = (line or "").lower().strip()
 
@@ -1201,14 +1229,28 @@ class ArelGuardApp(tk.Tk):
                 else:
                     line = "⚪ " + line
 
-                text_widget.configure(state="normal")
-                text_widget.insert("end", line, (t,))
-                text_widget.see("end")
-                text_widget.configure(state="disabled")
+                try:
+                    if not text_widget.winfo_exists():
+                        self._log_after_id = None
+                        return
+
+                    text_widget.configure(state="normal")
+                    text_widget.insert("end", line, (t,))
+                    text_widget.see("end")
+                    text_widget.configure(state="disabled")
+
+                except tk.TclError:
+                    self._log_after_id = None
+                    return
+
         except queue.Empty:
             pass
 
-        self.after(100, lambda: self._poll_log_queue(text_widget))
+        # Reschedule safely
+        self._log_after_id = self.after(
+            100,
+            lambda: self._poll_log_queue(text_widget, token)
+        )
 
     def _poll_status_snapshot(self, family: str, mode_kind: str) -> dict:
         kind = mode_kind
@@ -1525,7 +1567,12 @@ class ArelGuardApp(tk.Tk):
         text.configure(state="disabled")
 
         self._style_log_widget(text)
-        self._poll_log_queue(text)
+        self._log_poll_token += 1
+        token = self._log_poll_token
+        self._log_after_id = self.after(
+            100,
+            lambda: self._poll_log_queue(text, token)
+)
 
         def poll():
             if self.active_page != family:
@@ -1922,7 +1969,12 @@ class ArelGuardApp(tk.Tk):
         log_text.configure(state="disabled")
 
         self._style_log_widget(log_text)
-        self._poll_log_queue(log_text)
+        self._log_poll_token += 1
+        token = self._log_poll_token
+        self._log_after_id = self.after(
+            100,
+            lambda: self._poll_log_queue(log_text, token)
+)
 
         def _toggle_details(*_):
             if show_details.get():
